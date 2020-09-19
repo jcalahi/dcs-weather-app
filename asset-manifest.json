@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/dcs-weather-app/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/dcs-weather-app/static/js/main.c2a8b644.chunk.js",
+    "main.js.map": "/dcs-weather-app/static/js/main.c2a8b644.chunk.js.map",
+    "runtime-main.js": "/dcs-weather-app/static/js/runtime-main.1ecf6f2e.js",
+    "runtime-main.js.map": "/dcs-weather-app/static/js/runtime-main.1ecf6f2e.js.map",
+    "static/js/2.96e7caab.chunk.js": "/dcs-weather-app/static/js/2.96e7caab.chunk.js",
+    "static/js/2.96e7caab.chunk.js.map": "/dcs-weather-app/static/js/2.96e7caab.chunk.js.map",
+    "index.html": "/dcs-weather-app/index.html",
+    "precache-manifest.5cc67656a4651e78494dba6d964f46e5.js": "/dcs-weather-app/precache-manifest.5cc67656a4651e78494dba6d964f46e5.js",
+    "service-worker.js": "/dcs-weather-app/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/dcs-weather-app/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.96e7caab.chunk.js.LICENSE.txt": "/dcs-weather-app/static/js/2.96e7caab.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1ecf6f2e.js",
+    "static/js/2.96e7caab.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.c2a8b644.chunk.js"
+  ]
+}
