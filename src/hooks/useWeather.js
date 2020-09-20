@@ -2,8 +2,6 @@ import { useState, useCallback } from 'react';
 import axios from 'axios';
 import { WEATHER_BASE_URL } from '../constants';
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-
 export default function useWeather() {
   const [weather, setWeather] = useState({});
   const [isFetchingCurrent, setIsFetchingCurrent] = useState(false);
