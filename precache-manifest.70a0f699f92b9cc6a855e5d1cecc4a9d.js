@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6d6a72b6bd66dbcb89d93815afcf0f3d",
+    "revision": "3c5fbf45e07b7e3012b6c590c17ebb03",
     "url": "/dcs-weather-app/index.html"
   },
   {
-    "revision": "4d848658fe39ace9e317",
+    "revision": "ea0679a8e710bbe842d2",
     "url": "/dcs-weather-app/static/css/main.89cc8588.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dcs-weather-app/static/js/2.f8ebd999.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4d848658fe39ace9e317",
-    "url": "/dcs-weather-app/static/js/main.7e5ba757.chunk.js"
+    "revision": "ea0679a8e710bbe842d2",
+    "url": "/dcs-weather-app/static/js/main.373aca71.chunk.js"
   },
   {
     "revision": "40da8dbc9d1d390baf2a",
