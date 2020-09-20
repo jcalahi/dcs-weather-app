@@ -1,15 +1,18 @@
 import React from 'react';
+import CityInfo from '../CityInfo';
 import SearchBox from '../SearchBox';
 
-function WeatherHome() {
+function Home() {
   return (
     <div style={{ padding: '100px' }}>
-      <h1>DCS Weather App</h1>
-      <div style={{ width: '400px' }}>
+      <div style={{ margin: '0 auto', width: '600px' }}>
         <SearchBox placeholder="Enter a city name" />
+      </div>
+      <div>
+        <CityInfo />
       </div>
     </div>
   );
 }
 
-export default WeatherHome;
+export default Home;

@@ -1,19 +1,37 @@
-import React from 'react';
-import { bool, string } from 'prop-types';
+import React, { useContext, useEffect } from 'react';
+import { string } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-
+import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
+// context
+import WeatherContext from '../../context/WeatherContext';
+// hooks
+import useWeather from '../../hooks/useWeather';
+// components
 import Search from '../../components/Search';
 
 const { SearchInput, SearchButton } = Search;
 
-function SearchBox({ placeholder }) {
+function SearchBox(props) {
+  const { id, placeholder } = props;
+  const [weather, isFetchingCurrent, fetchCurrent] = useWeather();
+  const { setCurrentWeather } = useContext(WeatherContext.WeatherStateContext);
+
+  useEffect(() => {
+    setCurrentWeather(weather);
+  }, [weather, setCurrentWeather]);
+
+  const handleSubmit = (e) => {
+    const searchStr = e.target[0].value;
+    e.preventDefault();
+    fetchCurrent(searchStr);
+  };
+
   return (
-    <form>
-      <Search id="search-input">
-        <SearchInput id="search-input" placeholder={placeholder} />
+    <form onSubmit={handleSubmit}>
+      <Search id={id}>
+        <SearchInput id={id} placeholder={placeholder} />
         <SearchButton>
-          <FontAwesomeIcon icon={faSearch} size="2x" />
+          <FontAwesomeIcon icon={isFetchingCurrent ? faSpinner : faSearch} size="2x" spin={isFetchingCurrent} />
         </SearchButton>
       </Search>
     </form>
@@ -21,13 +39,15 @@ function SearchBox({ placeholder }) {
 }
 
 SearchBox.propTypes = {
-  loading: bool,
+  id: string,
   placeholder: string
 };
 
 SearchBox.defaultProps = {
+  id: 'search-input',
   placeholder: 'Enter a text here',
-  loading: false
 };
+
+SearchBox.whyDidYouRender = true;
 
 export default SearchBox;
