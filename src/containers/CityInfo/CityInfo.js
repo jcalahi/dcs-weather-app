@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { faStar as solid } from '@fortawesome/free-solid-svg-icons';
+import { faStar as regular } from '@fortawesome/free-regular-svg-icons';
 // context
 import WeatherContext from '../../context/WeatherContext';
 // components
 import Media from '../../components/Media';
 
-const { MediaHeader, MediaBody } = Media;
+const { MediaHeader, MediaHeaderIcon, MediaBody } = Media;
 
 function CityInfo() {
   const { currentWeather } = useContext(WeatherContext.WeatherStateContext);
@@ -24,7 +26,11 @@ function CityInfo() {
 
   return (
     <Media>
-      <MediaHeader primary={getCityName()} tertiary={getCurrentDate()} />
+      <MediaHeader
+        primaryText={getCityName()}
+        secondaryText={getCurrentDate()}
+        extra={<MediaHeaderIcon icon={regular} onIconClick={() => console.log('click')} />}
+      />
     </Media>
   );
 }
