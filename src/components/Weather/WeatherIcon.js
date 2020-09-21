@@ -1,32 +1,27 @@
 import React from 'react';
+import { string } from 'prop-types';
 import styled from 'styled-components';
-import { number, string } from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getWeatherDescription } from '../../utils';
 
-const IconContainer = styled.div`
+const IconContainer = styled.span`
   align-self: center;
 
-  & > svg {
-    ${(props) => (props.size) && `font-size: ${props.size}`}
+  & > img {
+    border-radius: 10rem;
+    ${(props) => props.size && `height: ${props.size}; width: ${props.size};`};
   }
 `;
 
 function WeatherIcon(props) {
   return (
     <IconContainer size={props.size}>
-      <FontAwesomeIcon icon={getWeatherDescription(props.weatherCode)} />
+      <img alt="weather icon" src={props.icon} />
     </IconContainer>
   );
 }
 
 WeatherIcon.propTypes = {
-  weatherCode: number,
+  icon: string,
   size: string
-};
-
-WeatherIcon.defaultProps = {
-  size: '2x'
 };
 
 export default WeatherIcon;

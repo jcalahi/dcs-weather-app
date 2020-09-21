@@ -14,11 +14,11 @@ const { SearchInput, SearchButton } = Search;
 function SearchBox(props) {
   const { id, placeholder } = props;
   const [weather, isFetchingCurrent, fetchCurrent] = useWeather();
-  const { setCurrentWeather } = useContext(WeatherContext.WeatherStateContext);
+  const [, dispatch] = useContext(WeatherContext.WeatherStateContext);
 
   useEffect(() => {
-    setCurrentWeather(weather);
-  }, [weather, setCurrentWeather]);
+    dispatch({ type: 'FETCH_WEATHER', weather });
+  }, [weather, dispatch]);
 
   const handleSubmit = (e) => {
     const searchStr = e.target[0].value;
