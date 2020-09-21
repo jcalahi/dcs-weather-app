@@ -1,25 +1,30 @@
 import React, { useContext } from 'react';
-import { faStar as solid } from '@fortawesome/free-solid-svg-icons';
+import { faStar as solid, faCloudRain } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as regular } from '@fortawesome/free-regular-svg-icons';
 // context
 import WeatherContext from '../../context/WeatherContext';
 // components
 import Media from '../../components/Media';
+import { default as Weather } from '../../components/Weather';
+// etc
+import { getWeatherDescription } from '../../utils';
 
-const { MediaHeader, MediaHeaderIcon, MediaBody } = Media;
+
+const { MediaHeader, MediaHeaderIcon, MediaContent } = Media;
+const { WeatherIcon, WeatherTemp } = Weather;
 
 function CityInfo() {
   const { currentWeather } = useContext(WeatherContext.WeatherStateContext);
   console.log(currentWeather);
+  const { current, location } = currentWeather;
 
   const getCityName = () => {
-    const city = currentWeather.location;
-    return `${city.name}, ${city.country}`;
+    return `${location.name}, ${location.country}`;
   };
 
   const getCurrentDate = () => {
-    const date = new Date(currentWeather.location.localtime_epoch * 1000);
-    return date.toDateString();
+    return new Date(location.localtime_epoch * 1000).toDateString();
   };
 
   if (Object.keys(currentWeather).length === 0) return null;
@@ -31,6 +36,13 @@ function CityInfo() {
         secondaryText={getCurrentDate()}
         extra={<MediaHeaderIcon icon={regular} onIconClick={() => console.log('click')} />}
       />
+      <MediaContent style={{ justifyContent: 'space-evenly' }}>
+        <WeatherIcon weatherCode={current.weather_code} size="14rem" />
+        <WeatherTemp temperature={current.temperature} description={current.weather_descriptions[0]} />
+      </MediaContent>
+      <MediaContent>
+        Other Details
+      </MediaContent>
     </Media>
   );
 }

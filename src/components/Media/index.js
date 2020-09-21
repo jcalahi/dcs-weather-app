@@ -1,17 +1,16 @@
-import React from 'react';
 import styled from 'styled-components';
 
 import MediaHeader from './MediaHeader';
 import MediaHeaderIcon from './MediaHeaderIcon';
+import MediaContent from './MediaContent';
 
-const Body = styled.div``;
-const Content = styled.div``;
-
-const Media = styled.div``;
+const Media = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 Media.MediaHeader = MediaHeader;
 Media.MediaHeaderIcon = MediaHeaderIcon;
-Media.MediaBody = Body;
-Media.MediaContent = Content;
+Media.MediaContent = MediaContent;
 
 export default Media;

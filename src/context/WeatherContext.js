@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 
 const WeatherStateContext = createContext();
+
 const WeatherStateProvider = ({ children }) => {
   const [currentWeather, setCurrentWeather] = useState({});
   return (

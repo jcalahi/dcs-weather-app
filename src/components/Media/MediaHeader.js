@@ -4,7 +4,7 @@ import { string, element } from 'prop-types';
 
 const FlexContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between
 `;
 
 const H2 = styled.h2`
@@ -19,13 +19,13 @@ const H4 = styled.h4`
 
 function MediaHeader({ primaryText, secondaryText, extra }) {
   return (
-    <>
+    <div style={{ flexBasis: '100%' }}>
       <FlexContainer>
         <H2>{primaryText}</H2>
         {extra}
       </FlexContainer>
       <H4>{secondaryText}</H4>
-    </>
+    </div>
   );
 }
 
