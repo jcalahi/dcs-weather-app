@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/dcs-weather-app/precache-manifest.947080c858eab21b0536e5438e7a0b6a.js"
+  "/dcs-weather-app/precache-manifest.e67f3e01d58b35cebc08713891269458.js"
 );
 
 self.addEventListener('message', (event) => {
