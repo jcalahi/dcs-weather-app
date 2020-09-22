@@ -6,6 +6,8 @@ import WeatherContext from '../../context/WeatherContext';
 import Media from '../../components/Media';
 import { default as Weather } from '../../components/Weather';
 import WeatherTile from '../../components/Weather/WeatherTile';
+// etc
+import { ACTION_TYPES } from '../../constants';
 
 const { MediaHeader, MediaHeaderIcon, MediaContent } = Media;
 const { WeatherIcon, WeatherTemp } = Weather;
@@ -31,7 +33,7 @@ function CityInfo() {
       <MediaHeader
         primaryText={getCityName()}
         secondaryText={getCurrentDate()}
-        extra={<MediaHeaderIcon icon={regular} onIconClick={() => dispatch({ type: 'ADD', weather })} />}
+        extra={<MediaHeaderIcon icon={regular} onIconClick={() => dispatch({ type: ACTION_TYPES.ADD, weather })} />}
       />
       <MediaContent style={{ justifyContent: 'space-evenly' }}>
         <WeatherIcon icon={current.weather_icons[0]} size="12rem" />
@@ -48,7 +50,5 @@ function CityInfo() {
     </Media>
   );
 }
-
-CityInfo.whyDidYouRender = true;
 
 export default CityInfo;

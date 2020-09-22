@@ -3,7 +3,19 @@
   --color-lightslategrey: #778899;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 html {
+  box-sizing: border-box;
   /* 1 rem = 10px; 10px/16px = 62.5% */
   font-size: 62.5%;
 }
@@ -21,3 +33,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

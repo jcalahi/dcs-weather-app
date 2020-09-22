@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import { ACTION_TYPES } from '../constants';
 
 const initialState = {
   weather: {},
@@ -7,13 +8,13 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'FETCH_WEATHER': {
+    case ACTION_TYPES.FETCH_WEATHER: {
       return {
         ...state,
         weather: action.weather
       };
     }
-    case 'ADD': {
+    case ACTION_TYPES.ADD: {
       const { name } = action.weather.location;
       const cityIndex = state.favorites.findIndex((city) => city.location.name === name);
       // favorites must be unique

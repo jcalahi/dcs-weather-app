@@ -28,10 +28,10 @@ export default function useWeather() {
     }
   }, []);
 
-  return [
+  return {
     weather,
     isFetchingCurrent,
     fetchCurrent,
     errorMessage
-  ];
+  };
 }
