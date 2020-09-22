@@ -10,8 +10,10 @@ const TempH3 = styled.h3`
 
 const DescH4 = styled.h4`
   font-family: Raleway, sans-serif;
-  font-size: 4rem;
+  font-size: 2.5rem;
+  font-weight: 400;
   margin: 0;
+  max-width: 40rem;
 `;
 
 function WeatherTemp(props) {

@@ -66,7 +66,7 @@ const SearchContainer = styled.div`
           font-family: Raleway;
           font-weight: 400;
           font-size: 1.6rem;
-          z-index: 2;
+          z-index: 10;
         }
 
         &-list {
@@ -123,8 +123,8 @@ function SearchBox() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const searchStr = e.target[0].value;
-    // call API if input is not blank, or input has changed values
-    if (searchStr !== '' || searchStr !== query) {
+    // call API if input is not blank
+    if (searchStr !== '') {
       fetchCurrent(searchStr);
     }
   };
@@ -158,6 +158,7 @@ function SearchBox() {
     <form onSubmit={handleSubmit}>
       <SearchContainer>
         <Autosuggest
+          focusInputOnSuggestionClick={false}
           inputProps={{
             placeholder: 'Enter a city names',
             onChange: handleChange,

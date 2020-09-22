@@ -18,13 +18,21 @@ const reducer = (state, action) => {
       const { name } = action.weather.location;
       const cityIndex = state.favorites.findIndex((city) => city.location.name === name);
       // favorites must be unique
+      // then remove if selected again
       if (cityIndex === -1) {
         return {
           ...state,
           favorites: [...state.favorites, action.weather]
         };
+      } else {
+        return {
+          ...state,
+          favorites: [
+            ...state.favorites.slice(0, cityIndex),
+            ...state.favorites.slice(cityIndex + 1)
+          ]
+        };
       }
-      return state;
     }
     default:
       return state;

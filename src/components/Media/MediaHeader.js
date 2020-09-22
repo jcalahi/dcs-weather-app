@@ -4,7 +4,7 @@ import { string, element } from 'prop-types';
 
 const FlexContainer = styled.div`
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 `;
 
 const H2 = styled.h2`
@@ -13,7 +13,8 @@ const H2 = styled.h2`
 `;
 
 const H4 = styled.h4`
-  font-size: 2rem;
+  font-family: Raleway;
+  font-size: 2.5rem;
   margin: 1.5rem 0;
 `;
 
