@@ -14,7 +14,7 @@ const reducer = (state, action) => {
         weather: action.weather
       };
     }
-    case ACTION_TYPES.ADD: {
+    case ACTION_TYPES.TOGGLE_FAVORITES: {
       const { name } = action.weather.location;
       const cityIndex = state.favorites.findIndex((city) => city.location.name === name);
       // favorites must be unique
