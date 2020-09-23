@@ -1,14 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { faStar as regular } from '@fortawesome/free-regular-svg-icons';
+import { faStar as solid } from '@fortawesome/free-solid-svg-icons';
 // components
 import Header from '../Header';
 import WeatherIcon from './WeatherIcon';
-import WeatherTemp from './WeatherTemp';
-
-import { faStar as regular } from '@fortawesome/free-regular-svg-icons';
-import { faStar as solid } from '@fortawesome/free-solid-svg-icons';
-
-import { default as TextHeader } from '../TextHeader';
 import FavoriteIcon from '../FavoriteIcon';
 
 const { HeaderTitle, HeaderIcon } = Header;
@@ -31,7 +27,7 @@ const WeatherDetails = styled.div`
   }
 `;
 
-function WeatherCard({ name, region, icon, temp, isFavorite, onCardClick }) {
+function WeatherCard({ name, icon, temp, isFavorite, onCardClick }) {
   return (
     <Weather>
       <Header>

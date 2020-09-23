@@ -7,7 +7,6 @@ import WeatherContext from '../../context/WeatherContext';
 // components
 import Media from '../../components/Media';
 import Weather from '../../components/Weather';
-import { default as TextHeader } from '../../components/TextHeader';
 import Header from '../../components/Header';
 import FavoriteIcon from '../../components/FavoriteIcon';
 // etc

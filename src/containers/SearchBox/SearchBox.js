@@ -9,6 +9,7 @@ import WeatherContext from '../../context/WeatherContext';
 // hooks
 import useLookup from '../../hooks/useLookup';
 import useWeather from '../../hooks/useWeather';
+import { useGeoLocation } from '../../hooks/useGeoLocation';
 // etc
 import { ACTION_TYPES } from '../../constants';
 
@@ -104,17 +105,39 @@ const SearchButton = styled.button`
   }
 `;
 
+const SearchLocation = styled.button`
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  > span {
+    font-family: Raleway;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+`;
+
 function SearchBox() {
+  const [, dispatch] = useContext(WeatherContext.WeatherStateContext);
+
   const [query, setQuery] = useState('');
+
   const { weather, isFetchingCurrent, fetchCurrent } = useWeather();
   const { results, isLookingUp, lookup } = useLookup();
-  const [, dispatch] = useContext(WeatherContext.WeatherStateContext);
+  const { position, getPosition } = useGeoLocation();
 
   const debounceSearch = useMemo(() => debounce(lookup, 400), [lookup]);
 
   useEffect(() => {
     dispatch({ type: ACTION_TYPES.FETCH_WEATHER, weather });
   }, [weather, dispatch]);
+
+  useEffect(() => {
+    if (position) {
+      fetchCurrent(position);
+    }
+  }, [fetchCurrent, position]);
 
   const handleChange = (e, { newValue }) => {
     setQuery(newValue);
@@ -154,32 +177,40 @@ function SearchBox() {
     }
   };
 
+  console.log(position);
   return (
-    <form onSubmit={handleSubmit}>
-      <SearchContainer>
-        <Autosuggest
-          focusInputOnSuggestionClick={false}
-          inputProps={{
-            placeholder: 'Enter a city names',
-            onChange: handleChange,
-            value: query,
-          }}
-          suggestions={results}
-          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={() => {}}
-          onSuggestionSelected={onSuggestionSelected}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-        />
-        <SearchButton>
-          <FontAwesomeIcon
-            size="2x"
-            icon={isLookingUp || isFetchingCurrent ? faSpinner : faSearch}
-            spin={isLookingUp || isFetchingCurrent}
+    <div>
+      <form onSubmit={handleSubmit}>
+        <SearchContainer>
+          <Autosuggest
+            focusInputOnSuggestionClick={false}
+            inputProps={{
+              placeholder: 'Enter a city names',
+              onChange: handleChange,
+              value: query,
+            }}
+            suggestions={results}
+            onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={() => {}}
+            onSuggestionSelected={onSuggestionSelected}
+            getSuggestionValue={getSuggestionValue}
+            renderSuggestion={renderSuggestion}
           />
-        </SearchButton>
-      </SearchContainer>
-    </form>
+          <SearchButton>
+            <FontAwesomeIcon
+              size="2x"
+              icon={isLookingUp || isFetchingCurrent ? faSpinner : faSearch}
+              spin={isLookingUp || isFetchingCurrent}
+            />
+          </SearchButton>
+        </SearchContainer>
+      </form>
+      <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+        <SearchLocation onClick={() => getPosition()}>
+          <span>Or use my location</span>
+        </SearchLocation>
+      </div>
+    </div>
   );
 }
 
