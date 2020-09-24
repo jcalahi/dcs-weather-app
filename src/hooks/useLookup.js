@@ -10,12 +10,14 @@ export default function useLookup() {
   const lookup = useCallback(async (query) => {
     const params = {
       access_key: process.env.REACT_APP_WEATHER_API_KEY,
-      query
+      query,
     };
 
     try {
       setIsLookingUp(true);
-      const { data } = await axios.get(`${WEATHER_BASE_URL}/autocomplete`, { params });
+      const { data } = await axios.get(`${WEATHER_BASE_URL}/autocomplete`, {
+        params,
+      });
       if (data.error) {
         setErrorLookupMsg(data.error.info);
       } else {
@@ -33,6 +35,6 @@ export default function useLookup() {
     setResults,
     isLookingUp,
     lookup,
-    errorLookupMsg
+    errorLookupMsg,
   };
 }

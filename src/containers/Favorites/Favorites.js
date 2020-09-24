@@ -14,7 +14,9 @@ import Text from '../../components/Text';
 import { ACTION_TYPES } from '../../constants';
 
 function Favorites() {
-  const [{ favorites }, dispatch] = useContext(WeatherContext.WeatherStateContext);
+  const [{ favorites }, dispatch] = useContext(
+    WeatherContext.WeatherStateContext
+  );
   const history = useHistory();
 
   const renderFavorites = () => {
@@ -23,7 +25,14 @@ function Favorites() {
       return (
         <Card key={idx}>
           <Card.Header title={location.name} subtitle={location.region}>
-            <span onClick={() => dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather: favorite })}>
+            <span
+              onClick={() =>
+                dispatch({
+                  type: ACTION_TYPES.TOGGLE_FAVORITES,
+                  weather: favorite,
+                })
+              }
+            >
               <Icon color="orange" icon={faStar} size="2x" />
             </span>
           </Card.Header>
@@ -41,7 +50,9 @@ function Favorites() {
           </Card.Body>
           <Card.Overlay className="overlay">
             <Button.Group>
-              <Button onClick={() => history.push('/details')}>Learn more</Button>
+              <Button onClick={() => history.push('/details')}>
+                Learn more
+              </Button>
             </Button.Group>
           </Card.Overlay>
         </Card>
@@ -58,9 +69,7 @@ function Favorites() {
           <Text size="3rem" primary>{`Favorites (${favorites.length})`}</Text>
         </h2>
       </div>
-      <Grid>
-        {renderFavorites()}
-      </Grid>
+      <Grid>{renderFavorites()}</Grid>
     </>
   );
 }

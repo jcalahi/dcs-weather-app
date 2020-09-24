@@ -27,6 +27,6 @@ export function useGeoLocation(options = {}) {
   return {
     position,
     getPosition,
-    error
+    error,
   };
 }

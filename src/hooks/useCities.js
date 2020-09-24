@@ -9,18 +9,22 @@ export default function useCities() {
 
   const fetchData = async () => {
     const { data: cities } = await axios.get('cities.json');
-    const query = cities.reduce((prev, curr) => [...prev, curr.Name], []).join(';');
+    const query = cities
+      .reduce((prev, curr) => [...prev, curr.Name], [])
+      .join(';');
 
     const params = {
       access_key: process.env.REACT_APP_WEATHER_API_KEY,
-      query
+      query,
     };
 
     try {
       setIsFetchingCities(true);
       // const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, { params });
       const data = [];
-      const sortedData = data.sort((a, b) => a.location.name.localeCompare(b.location.name));
+      const sortedData = data.sort((a, b) =>
+        a.location.name.localeCompare(b.location.name)
+      );
       setCities(sortedData);
     } catch (error) {
       setErrorCitiesMsg(error);
@@ -37,6 +41,6 @@ export default function useCities() {
     cities,
     setCities,
     isFetchingCities,
-    errorCitiesMsg
+    errorCitiesMsg,
   };
 }

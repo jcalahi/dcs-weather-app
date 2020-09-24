@@ -4,7 +4,7 @@ const Grid = styled.div`
   display: grid;
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr))
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 `;
 
 export default Grid;

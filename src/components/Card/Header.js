@@ -12,10 +12,14 @@ function Header({ title, subtitle, children }) {
     <FlexHeader>
       <div>
         <h2>
-          <Text size="2rem" primary>{title}</Text>
+          <Text size="2rem" primary>
+            {title}
+          </Text>
         </h2>
         <p>
-          <Text size="1.5rem" weight="200" secondary>{subtitle}</Text>
+          <Text size="1.5rem" weight="200" secondary>
+            {subtitle}
+          </Text>
         </p>
       </div>
       {children}

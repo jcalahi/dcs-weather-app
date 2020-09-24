@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 // components
-import Wrapper from '../../components/Wrapper';
 import SearchBox from '../SearchBox';
 import CityInfo from '../CityInfo';
 import Favorites from '../Favorites';
@@ -11,24 +10,28 @@ const HomeWrapper = styled.div`
   padding: 10rem 15rem;
 `;
 
+const SegmentWrapper = styled.div`
+  margin-bottom: 2.5rem;
+`;
+
 function Home() {
   return (
     <HomeWrapper>
-      <Wrapper>
+      <SegmentWrapper>
         <header>
           <SearchBox />
         </header>
-      </Wrapper>
+      </SegmentWrapper>
       <main>
-        <Wrapper>
+        <SegmentWrapper>
           <CityInfo />
-        </Wrapper>
-        <Wrapper>
+        </SegmentWrapper>
+        <SegmentWrapper>
           <Favorites />
-        </Wrapper>
-        <Wrapper>
+        </SegmentWrapper>
+        <SegmentWrapper>
           <TopCities />
-        </Wrapper>
+        </SegmentWrapper>
       </main>
     </HomeWrapper>
   );

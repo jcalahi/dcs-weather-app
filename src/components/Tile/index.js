@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
-const TileContent = styled.div``;
-
-const TileGroup = styled.div`
-
+const TileBody = styled.div`
+  margin-bottom: 1.5rem;
 `;
+
+const TileGroup = styled.div``;
 
 const Tile = styled.div`
   display: inline-block;
 `;
 
 Tile.Group = TileGroup;
-Tile.Content = TileContent;
+Tile.Body = TileBody;
 
 export default Tile;

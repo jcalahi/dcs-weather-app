@@ -15,7 +15,9 @@ import Button from '../../components/Button';
 import { ACTION_TYPES } from '../../constants';
 
 function TopCities() {
-  const [{ favorites }, dispatch] = useContext(WeatherContext.WeatherStateContext);
+  const [{ favorites }, dispatch] = useContext(
+    WeatherContext.WeatherStateContext
+  );
 
   const { cities, setCities } = useCities();
 
@@ -38,9 +40,17 @@ function TopCities() {
       const { current, location } = city;
       return (
         <Card key={idx}>
-          <Card.Header  title={location.name} subtitle={location.region}>
-            <span onClick={() => dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather: city })}>
-              <Icon color="orange" icon={fav[location.name] ? solid : regular } size="2x" />
+          <Card.Header title={location.name} subtitle={location.region}>
+            <span
+              onClick={() =>
+                dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather: city })
+              }
+            >
+              <Icon
+                color="orange"
+                icon={fav[location.name] ? solid : regular}
+                size="2x"
+              />
             </span>
           </Card.Header>
           <Card.Body>
@@ -57,12 +67,8 @@ function TopCities() {
           </Card.Body>
           <Card.Overlay className="overlay">
             <Button.Group>
-              <Button>
-                Learn more
-              </Button>
-              <Button onClick={() => handleRemoveCity(idx)}>
-                Remove
-              </Button>
+              <Button>Learn more</Button>
+              <Button onClick={() => handleRemoveCity(idx)}>Remove</Button>
             </Button.Group>
           </Card.Overlay>
         </Card>
@@ -87,12 +93,12 @@ function TopCities() {
     <>
       <div style={{ marginBottom: '2.5rem' }}>
         <h2>
-          <Text size="3rem" primary>Top 15 cities by population (A-Z)</Text>
+          <Text size="3rem" primary>
+            Top 15 cities by population (A-Z)
+          </Text>
         </h2>
       </div>
-      <Grid>
-        {renderCities()}
-      </Grid>
+      <Grid>{renderCities()}</Grid>
     </>
   );
 }

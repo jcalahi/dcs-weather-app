@@ -24,7 +24,6 @@ const SearchContainer = styled.div`
     display: flex;
 
     & .react-autosuggest {
-
       &__container {
         flex: 1;
         position: relative;
