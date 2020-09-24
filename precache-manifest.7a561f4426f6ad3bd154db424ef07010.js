@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d73481040a85d502b930841cd80f459e",
+    "revision": "d09b311767dad47a3fb98faf3fe3669e",
     "url": "/dcs-weather-app/index.html"
   },
   {
-    "revision": "ee4d092a9566845ebd9d",
+    "revision": "7830d9a172ba546b83dc",
     "url": "/dcs-weather-app/static/css/main.b8537f42.chunk.css"
   },
   {
-    "revision": "821df6e378f6759cb7ce",
-    "url": "/dcs-weather-app/static/js/2.a51505e0.chunk.js"
+    "revision": "949d9674d0742f164874",
+    "url": "/dcs-weather-app/static/js/2.13e18ee6.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/dcs-weather-app/static/js/2.a51505e0.chunk.js.LICENSE.txt"
+    "url": "/dcs-weather-app/static/js/2.13e18ee6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ee4d092a9566845ebd9d",
-    "url": "/dcs-weather-app/static/js/main.d197a970.chunk.js"
+    "revision": "7830d9a172ba546b83dc",
+    "url": "/dcs-weather-app/static/js/main.8124f554.chunk.js"
   },
   {
     "revision": "40da8dbc9d1d390baf2a",
