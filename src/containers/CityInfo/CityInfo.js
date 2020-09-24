@@ -16,13 +16,19 @@ const { MediaContent } = Media;
 const { WeatherIcon, WeatherTemp, WeatherTile } = Weather;
 const { HeaderTitle, HeaderIcon } = Header;
 
-const CityContainer = styled.div`
-  .header__title {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-  }
-  .header__subTitle {
-    font-size: 2.5rem;
+const Container = styled.div`
+  &.city-info {
+    .header {
+      margin-bottom: 2.5rem;
+
+      &__title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      &__subTitle {
+        font-size: 2rem;
+      }
+    }
   }
 `;
 
@@ -35,6 +41,8 @@ function CityInfo() {
   };
 
   const getCurrentDate = () => {
+    const d = new Date(location.localtime_epoch * 1000);
+    console.log(d.getUTCDay());
     return new Date(location.localtime_epoch * 1000).toDateString();
   };
 
@@ -46,7 +54,7 @@ function CityInfo() {
   if (Object.keys(weather).length === 0) return null;
 
   return (
-    <CityContainer>
+    <Container className="city-info">
       <Header>
         <HeaderTitle title={getCityName()} subTitle={getCurrentDate()} />
         <HeaderIcon onIconClick={() => dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather })}>
@@ -67,7 +75,7 @@ function CityInfo() {
           <WeatherTile value={`${current.feelslike} ${'\u00b0'}C`} description="Feels like" />
         </Weather>
       </Media>
-    </CityContainer>
+    </Container>
   );
 }
 

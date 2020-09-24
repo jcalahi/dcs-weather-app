@@ -6,9 +6,11 @@ const StyledHeaderTitle = styled.div`
   width: 85%;
 
   & .header {
+    margin-bottom: 2.5rem;
+
     &__title {
       font-family: 'Fredoka One', sans-serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       overflow: hidden;
       text-overflow: ellipsis;
       width: 100%;

@@ -1,0 +1,122 @@
+[
+  {
+    "rank": 1,
+    "Name": "Tokyo",
+    "Country": "Japan",
+    "Population": 37393128,
+    "Prev": 37435192,
+    "Growth": "-0.0011"
+  },
+  {
+    "rank": 2,
+    "Name": "New Delhi",
+    "Country": "India",
+    "Population": 30290936,
+    "Prev": 29399140,
+    "Growth": "0.0303"
+  },
+  {
+    "rank": 3,
+    "Name": "Shanghai",
+    "Country": "China",
+    "Population": 27058480,
+    "Prev": 26317104,
+    "Growth": "0.0282"
+  },
+  {
+    "rank": 4,
+    "Name": "Sao Paulo",
+    "Country": "Brazil",
+    "Population": 22043028,
+    "Prev": 21846508,
+    "Growth": "0.0090"
+  },
+  {
+    "rank": 5,
+    "Name": "Mexico City",
+    "Country": "Mexico",
+    "Population": 21782378,
+    "Prev": 21671908,
+    "Growth": "0.0051"
+  },
+  {
+    "rank": 6,
+    "Name": "Dhaka",
+    "Country": "Bangladesh",
+    "Population": 21005860,
+    "Prev": 20283552,
+    "Growth": "0.0356"
+  },
+  {
+    "rank": 7,
+    "Name": "Cairo",
+    "Country": "Egypt",
+    "Population": 20900604,
+    "Prev": 20484964,
+    "Growth": "0.0203"
+  },
+  {
+    "rank": 8,
+    "Name": "Beijing",
+    "Country": "China",
+    "Population": 20462610,
+    "Prev": 20035456,
+    "Growth": "0.0213"
+  },
+  {
+    "rank": 9,
+    "Name": "Mumbai",
+    "Country": "India",
+    "Population": 20411274,
+    "Prev": 20185064,
+    "Growth": "0.0112"
+  },
+  {
+    "rank": 10,
+    "Name": "Osaka",
+    "Country": "Japan",
+    "Population": 19165340,
+    "Prev": 19222664,
+    "Growth": "-0.0030"
+  },
+  {
+    "rank": 11,
+    "Name": "Karachi",
+    "Country": "Pakistan",
+    "Population": 16093786,
+    "Prev": 15741406,
+    "Growth": "0.0224"
+  },
+  {
+    "rank": 12,
+    "Name": "Chongqing",
+    "Country": "China",
+    "Population": 15872179,
+    "Prev": 15354067,
+    "Growth": "0.0337"
+  },
+  {
+    "rank": 13,
+    "Name": "Istanbul",
+    "Country": "Turkey",
+    "Population": 15190336,
+    "Prev": 14967667,
+    "Growth": "0.0149"
+  },
+  {
+    "rank": 14,
+    "Name": "Buenos Aires",
+    "Country": "Argentina",
+    "Population": 15153729,
+    "Prev": 15057273,
+    "Growth": "0.0064"
+  },
+  {
+    "rank": 15,
+    "Name": "Kolkata",
+    "Country": "India",
+    "Population": 14850066,
+    "Prev": 14755186,
+    "Growth": "0.0064"
+  }
+]

@@ -20,9 +20,10 @@ const reducer = (state, action) => {
       // favorites must be unique
       // then remove if selected again
       if (cityIndex === -1) {
+        const favorites = [...state.favorites, action.weather].sort((a, b) => a.location.name.localeCompare(b.location.name));
         return {
           ...state,
-          favorites: [...state.favorites, action.weather]
+          favorites,
         };
       } else {
         return {

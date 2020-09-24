@@ -177,7 +177,6 @@ function SearchBox() {
     }
   };
 
-  console.log(position);
   return (
     <div>
       <form onSubmit={handleSubmit}>

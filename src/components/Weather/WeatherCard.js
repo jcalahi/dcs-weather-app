@@ -36,9 +36,9 @@ function WeatherCard({ name, icon, temp, isFavorite, onCardClick }) {
           <FavoriteIcon icon={isFavorite ? solid : regular} size="2x" />
         </HeaderIcon>
       </Header>
-      <WeatherDetails>
+      <WeatherDetails icon={icon}>
         <WeatherIcon icon={icon} size="4rem" />
-        <span className="details__temp">{temp} &#8451;</span>
+        <span className="details__temp">{temp} &deg;</span>
       </WeatherDetails>
     </Weather>
   );
