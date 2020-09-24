@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
 import { faStar as regular } from '@fortawesome/free-regular-svg-icons';
 import { faStar as solid } from '@fortawesome/free-solid-svg-icons';
 // context
@@ -7,30 +6,13 @@ import WeatherContext from '../../context/WeatherContext';
 // components
 import Media from '../../components/Media';
 import Weather from '../../components/Weather';
-import Header from '../../components/Header';
-import FavoriteIcon from '../../components/FavoriteIcon';
+import Text from '../../components/Text';
+import Icon from '../../components/Icon';
 // etc
 import { ACTION_TYPES } from '../../constants';
 
 const { MediaContent } = Media;
 const { WeatherIcon, WeatherTemp, WeatherTile } = Weather;
-const { HeaderTitle, HeaderIcon } = Header;
-
-const Container = styled.div`
-  &.city-info {
-    .header {
-      margin-bottom: 2.5rem;
-
-      &__title {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-      &__subTitle {
-        font-size: 2rem;
-      }
-    }
-  }
-`;
 
 function CityInfo() {
   const [{ weather, favorites }, dispatch] = useContext(WeatherContext.WeatherStateContext);
@@ -41,8 +23,6 @@ function CityInfo() {
   };
 
   const getCurrentDate = () => {
-    const d = new Date(location.localtime_epoch * 1000);
-    console.log(d.getUTCDay());
     return new Date(location.localtime_epoch * 1000).toDateString();
   };
 
@@ -54,13 +34,20 @@ function CityInfo() {
   if (Object.keys(weather).length === 0) return null;
 
   return (
-    <Container className="city-info">
-      <Header>
-        <HeaderTitle title={getCityName()} subTitle={getCurrentDate()} />
-        <HeaderIcon onIconClick={() => dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather })}>
-          <FavoriteIcon icon={isFavorite() ? solid : regular} size="3x" />
-        </HeaderIcon>
-      </Header>
+    <>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2.5rem' }}>
+        <div>
+          <h2 style={{ marginBottom: '1rem' }}>
+            <Text size="3rem" primary>{getCityName()}</Text>
+          </h2>
+          <p>
+            <Text weight="300" size="2.5rem" secondary>{getCurrentDate()}</Text>
+          </p>
+        </div>
+        <span onClick={() => dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather })}>
+          <Icon color="orange" icon={isFavorite() ? solid : regular } size="3x" />
+        </span>
+      </div>
       <Media>
         <MediaContent style={{ justifyContent: 'space-evenly' }}>
           <WeatherIcon icon={current.weather_icons[0]} size="12rem" />
@@ -75,7 +62,7 @@ function CityInfo() {
           <WeatherTile value={`${current.feelslike} ${'\u00b0'}C`} description="Feels like" />
         </Weather>
       </Media>
-    </Container>
+    </>
   );
 }
 

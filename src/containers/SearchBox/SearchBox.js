@@ -4,6 +4,7 @@ import debounce from 'lodash/debounce';
 import Autosuggest from 'react-autosuggest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { useHistory } from 'react-router-dom';
 // context
 import WeatherContext from '../../context/WeatherContext';
 // hooks
@@ -12,6 +13,11 @@ import useWeather from '../../hooks/useWeather';
 import { useGeoLocation } from '../../hooks/useGeoLocation';
 // etc
 import { ACTION_TYPES } from '../../constants';
+
+const SearchWrapper = styled.div`
+  margin: 0 auto;
+  max-width: 60rem;
+`;
 
 const SearchContainer = styled.div`
   & {
@@ -119,6 +125,7 @@ const SearchLocation = styled.button`
 `;
 
 function SearchBox() {
+  const history = useHistory();
   const [, dispatch] = useContext(WeatherContext.WeatherStateContext);
 
   const [query, setQuery] = useState('');
@@ -135,7 +142,10 @@ function SearchBox() {
 
   useEffect(() => {
     if (position) {
-      fetchCurrent(position);
+      // we navigate to details page once
+      // user allows location access
+      history.push('/details');
+      // fetchCurrent(position);
     }
   }, [fetchCurrent, position]);
 
@@ -178,13 +188,13 @@ function SearchBox() {
   };
 
   return (
-    <div>
+    <SearchWrapper>
       <form onSubmit={handleSubmit}>
         <SearchContainer>
           <Autosuggest
             focusInputOnSuggestionClick={false}
             inputProps={{
-              placeholder: 'Enter a city names',
+              placeholder: 'Enter a city name',
               onChange: handleChange,
               value: query,
             }}
@@ -209,7 +219,7 @@ function SearchBox() {
           <span>Or use my location</span>
         </SearchLocation>
       </div>
-    </div>
+    </SearchWrapper>
   );
 }
 

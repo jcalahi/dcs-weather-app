@@ -1,46 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 // components
+import Wrapper from '../../components/Wrapper';
 import SearchBox from '../SearchBox';
 import CityInfo from '../CityInfo';
 import Favorites from '../Favorites';
 import TopCities from '../TopCities';
 
-const WeatherWrapper = styled.div`
+const HomeWrapper = styled.div`
   padding: 10rem 15rem;
-
-  .header {
-    &__search {
-      margin: 0 auto;
-      width: 60rem;
-    }
-  }
-
-  .wrapper {
-    margin-bottom: 3rem;
-  }
 `;
 
 function Home() {
   return (
-    <WeatherWrapper>
-      <header className="header">
-        <div className="header__search">
-          <SearchBox placeholder="Enter a city name" />
-        </div>
+    <HomeWrapper>
+      <header>
+        <SearchBox />
       </header>
       <main>
-        <div className="wrapper">
+        <Wrapper>
           <CityInfo />
-        </div>
-        <div className="wrapper">
+        </Wrapper>
+        <Wrapper>
           <Favorites />
-        </div>
-        <div className="wrapper">
+        </Wrapper>
+        <Wrapper>
           <TopCities />
-        </div>
+        </Wrapper>
       </main>
-    </WeatherWrapper>
+    </HomeWrapper>
   );
 }
 
