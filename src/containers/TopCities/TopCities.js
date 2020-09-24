@@ -14,6 +14,8 @@ import Button from '../../components/Button';
 // etc
 import { ACTION_TYPES } from '../../constants';
 
+// @TODO add list of cities in context
+
 function TopCities() {
   const [{ favorites }, dispatch] = useContext(
     WeatherContext.WeatherStateContext
@@ -73,17 +75,6 @@ function TopCities() {
           </Card.Overlay>
         </Card>
       );
-      // return (
-      //   <WeatherCard
-      //     key={idx}
-      //     name={location.name}
-      //     region={location.region}
-      //     icon={current.weather_icons[0]}
-      //     temp={current.temperature}
-      //     isFavorite={fav[location.name]}
-      //     onCardClick={() => dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather: city })}
-      //   />
-      // );
     });
   };
 

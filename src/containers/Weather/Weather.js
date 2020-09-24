@@ -55,10 +55,11 @@ const SpanImage = styled.span`
   }
 `;
 
-function CityInfo() {
+function Weather() {
   const [{ weather, favorites }, dispatch] = useContext(
     WeatherContext.WeatherStateContext
   );
+  console.log(weather);
   const { current, location } = weather;
 
   const getCityName = () => {
@@ -192,4 +193,4 @@ function CityInfo() {
   );
 }
 
-export default CityInfo;
+export default Weather;

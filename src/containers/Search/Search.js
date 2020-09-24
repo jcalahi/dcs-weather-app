@@ -123,7 +123,7 @@ const SearchLocation = styled.button`
   }
 `;
 
-function SearchBox() {
+function Search() {
   const history = useHistory();
   const [, dispatch] = useContext(WeatherContext.WeatherStateContext);
 
@@ -143,10 +143,14 @@ function SearchBox() {
     if (position) {
       // we navigate to details page once
       // user allows location access
-      history.push('/details');
+      history.push('/details', {
+        weather,
+        query,
+        position
+      });
       // fetchCurrent(position);
     }
-  }, [position, history]);
+  }, [position, history, query, weather]);
 
   const handleChange = (e, { newValue }) => {
     setQuery(newValue);
@@ -222,4 +226,4 @@ function SearchBox() {
   );
 }
 
-export default SearchBox;
+export default Search;
