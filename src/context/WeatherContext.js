@@ -3,7 +3,7 @@ import { ACTION_TYPES } from '../constants';
 
 const initialState = {
   weather: {},
-  favorites: [],
+  favorites: []
 };
 
 const reducer = (state, action) => {
@@ -11,7 +11,7 @@ const reducer = (state, action) => {
     case ACTION_TYPES.FETCH_WEATHER: {
       return {
         ...state,
-        weather: action.weather,
+        weather: action.weather
       };
     }
     case ACTION_TYPES.TOGGLE_FAVORITES: {
@@ -27,15 +27,15 @@ const reducer = (state, action) => {
         );
         return {
           ...state,
-          favorites,
+          favorites
         };
       } else {
         return {
           ...state,
           favorites: [
             ...state.favorites.slice(0, cityIndex),
-            ...state.favorites.slice(cityIndex + 1),
-          ],
+            ...state.favorites.slice(cityIndex + 1)
+          ]
         };
       }
     }

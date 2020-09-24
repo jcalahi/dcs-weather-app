@@ -195,7 +195,7 @@ function SearchBox() {
             inputProps={{
               placeholder: 'Enter a city name',
               onChange: handleChange,
-              value: query,
+              value: query
             }}
             suggestions={results}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}

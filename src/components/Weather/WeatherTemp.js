@@ -28,7 +28,7 @@ function WeatherTemp(props) {
 WeatherTemp.propTypes = {
   description: string,
   temperature: number,
-  textSize: string,
+  textSize: string
 };
 
 export default WeatherTemp;

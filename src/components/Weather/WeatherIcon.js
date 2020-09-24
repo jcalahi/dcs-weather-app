@@ -21,7 +21,7 @@ function WeatherIcon(props) {
 
 WeatherIcon.propTypes = {
   icon: string,
-  size: string,
+  size: string
 };
 
 export default WeatherIcon;

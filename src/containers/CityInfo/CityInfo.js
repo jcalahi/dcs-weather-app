@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import {
   faStar as regular,
-  faCompass,
+  faCompass
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faStar as solid,
   faWind,
   faWater,
   faCloud,
-  faTemperatureLow,
+  faTemperatureLow
 } from '@fortawesome/free-solid-svg-icons';
 import { faCloudscale } from '@fortawesome/free-brands-svg-icons';
 // context

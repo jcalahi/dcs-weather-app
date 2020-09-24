@@ -31,7 +31,7 @@ function WeatherTile(props) {
 
 WeatherTile.propTypes = {
   value: string,
-  description: string,
+  description: string
 };
 
 export default WeatherTile;

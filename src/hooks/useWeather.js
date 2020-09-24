@@ -10,13 +10,13 @@ export default function useWeather() {
   const fetchCurrent = useCallback(async (query) => {
     const params = {
       access_key: process.env.REACT_APP_WEATHER_API_KEY,
-      query,
+      query
     };
 
     try {
       setIsFetchingCurrent(true);
       const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, {
-        params,
+        params
       });
       if (data.error) {
         setErrorMessage(data.error.info);
@@ -34,6 +34,6 @@ export default function useWeather() {
     weather,
     isFetchingCurrent,
     fetchCurrent,
-    errorMessage,
+    errorMessage
   };
 }

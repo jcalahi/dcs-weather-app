@@ -29,7 +29,7 @@ function Favorites() {
               onClick={() =>
                 dispatch({
                   type: ACTION_TYPES.TOGGLE_FAVORITES,
-                  weather: favorite,
+                  weather: favorite
                 })
               }
             >

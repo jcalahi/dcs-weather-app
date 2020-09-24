@@ -15,7 +15,7 @@ export default function useCities() {
 
     const params = {
       access_key: process.env.REACT_APP_WEATHER_API_KEY,
-      query,
+      query
     };
 
     try {
@@ -41,6 +41,6 @@ export default function useCities() {
     cities,
     setCities,
     isFetchingCities,
-    errorCitiesMsg,
+    errorCitiesMsg
   };
 }
