@@ -11,15 +11,13 @@ import Card from '../../components/Card';
 import Text from '../../components/Text';
 import Icon from '../../components/Icon';
 import Button from '../../components/Button';
-import WeatherCard from '../../components/Weather/WeatherCard';
 // etc
 import { ACTION_TYPES } from '../../constants';
 
 function TopCities() {
   const [{ favorites }, dispatch] = useContext(WeatherContext.WeatherStateContext);
 
-  // const { cities } = useCities();
-  const cities = [];
+  const { cities, setCities } = useCities();
 
   const getFavoritesName = () => {
     let lookup = {};
@@ -27,6 +25,10 @@ function TopCities() {
       lookup[city.location.name] = city.location.name;
     }
     return lookup;
+  };
+
+  const handleRemoveCity = (cityIdx) => {
+    setCities([...cities.slice(0, cityIdx), ...cities.slice(cityIdx + 1)]);
   };
 
   const renderCities = () => {
@@ -55,8 +57,12 @@ function TopCities() {
           </Card.Body>
           <Card.Overlay className="overlay">
             <Button.Group>
-              <Button>Learn more</Button>
-              <Button>Remove</Button>
+              <Button>
+                Learn more
+              </Button>
+              <Button onClick={() => handleRemoveCity(idx)}>
+                Remove
+              </Button>
             </Button.Group>
           </Card.Overlay>
         </Card>

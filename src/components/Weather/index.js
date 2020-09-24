@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import WeatherCard from './WeatherCard';
-import WeatherIcon from './WeatherIcon';
-import WeatherTemp from './WeatherTemp';
-import WeatherTile from './WeatherTile';
+// import WeatherCard from './WeatherCard';
+// import WeatherIcon from './WeatherIcon';
+// import WeatherTemp from './WeatherTemp';
+// import WeatherTile from './WeatherTile';
 
 const Weather = styled.div`
   display: flex;
@@ -18,9 +18,9 @@ const Weather = styled.div`
   }
 `;
 
-Weather.WeatherIcon = WeatherIcon;
-Weather.WeatherTemp = WeatherTemp;
-Weather.WeatherTile = WeatherTile;
-Weather.WeatherCard = WeatherCard;
+// Weather.WeatherIcon = WeatherIcon;
+// Weather.WeatherTemp = WeatherTemp;
+// Weather.WeatherTile = WeatherTile;
+// Weather.WeatherCard = WeatherCard;
 
 export default Weather;

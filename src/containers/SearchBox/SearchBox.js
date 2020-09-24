@@ -4,10 +4,10 @@ import debounce from 'lodash/debounce';
 import Autosuggest from 'react-autosuggest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { useHistory } from 'react-router-dom';
 // context
 import WeatherContext from '../../context/WeatherContext';
 // hooks
+import { useHistory } from 'react-router-dom';
 import useLookup from '../../hooks/useLookup';
 import useWeather from '../../hooks/useWeather';
 import { useGeoLocation } from '../../hooks/useGeoLocation';
@@ -147,7 +147,7 @@ function SearchBox() {
       history.push('/details');
       // fetchCurrent(position);
     }
-  }, [fetchCurrent, position]);
+  }, [position, history]);
 
   const handleChange = (e, { newValue }) => {
     setQuery(newValue);

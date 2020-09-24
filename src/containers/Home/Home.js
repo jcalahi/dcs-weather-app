@@ -14,9 +14,11 @@ const HomeWrapper = styled.div`
 function Home() {
   return (
     <HomeWrapper>
-      <header>
-        <SearchBox />
-      </header>
+      <Wrapper>
+        <header>
+          <SearchBox />
+        </header>
+      </Wrapper>
       <main>
         <Wrapper>
           <CityInfo />

@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 // context
 import WeatherContext from '../../context/WeatherContext';
+// hooks
+import { useHistory } from 'react-router-dom';
 // components
 import Grid from '../../components/Grid';
 import Card from '../../components/Card';
@@ -13,6 +15,7 @@ import { ACTION_TYPES } from '../../constants';
 
 function Favorites() {
   const [{ favorites }, dispatch] = useContext(WeatherContext.WeatherStateContext);
+  const history = useHistory();
 
   const renderFavorites = () => {
     return favorites.map((favorite, idx) => {
@@ -38,8 +41,7 @@ function Favorites() {
           </Card.Body>
           <Card.Overlay className="overlay">
             <Button.Group>
-              <Button>Learn more</Button>
-              {/* <Button>Remove</Button> */}
+              <Button onClick={() => history.push('/details')}>Learn more</Button>
             </Button.Group>
           </Card.Overlay>
         </Card>

@@ -18,7 +18,8 @@ export default function useCities() {
 
     try {
       setIsFetchingCities(true);
-      const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, { params });
+      // const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, { params });
+      const data = [];
       const sortedData = data.sort((a, b) => a.location.name.localeCompare(b.location.name));
       setCities(sortedData);
     } catch (error) {
@@ -34,6 +35,7 @@ export default function useCities() {
 
   return {
     cities,
+    setCities,
     isFetchingCities,
     errorCitiesMsg
   };
