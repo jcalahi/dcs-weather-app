@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
-const TileBody = styled.div`
-  margin-bottom: 1.5rem;
-`;
-
-const TileGroup = styled.div``;
+import TileGroup from './TileGroup';
+import TileBody from './TileBody';
 
 const Tile = styled.div`
   display: inline-block;
