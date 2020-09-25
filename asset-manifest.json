@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/dcs-weather-app/static/css/main.b8537f42.chunk.css",
-    "main.js": "/dcs-weather-app/static/js/main.1f8fd73f.chunk.js",
-    "main.js.map": "/dcs-weather-app/static/js/main.1f8fd73f.chunk.js.map",
+    "main.js": "/dcs-weather-app/static/js/main.ef90564b.chunk.js",
+    "main.js.map": "/dcs-weather-app/static/js/main.ef90564b.chunk.js.map",
     "runtime-main.js": "/dcs-weather-app/static/js/runtime-main.1ecf6f2e.js",
     "runtime-main.js.map": "/dcs-weather-app/static/js/runtime-main.1ecf6f2e.js.map",
-    "static/js/2.b997c074.chunk.js": "/dcs-weather-app/static/js/2.b997c074.chunk.js",
-    "static/js/2.b997c074.chunk.js.map": "/dcs-weather-app/static/js/2.b997c074.chunk.js.map",
+    "static/js/2.7c258fff.chunk.js": "/dcs-weather-app/static/js/2.7c258fff.chunk.js",
+    "static/js/2.7c258fff.chunk.js.map": "/dcs-weather-app/static/js/2.7c258fff.chunk.js.map",
     "index.html": "/dcs-weather-app/index.html",
-    "precache-manifest.6255f8200df0364623069f1a714c16a9.js": "/dcs-weather-app/precache-manifest.6255f8200df0364623069f1a714c16a9.js",
+    "precache-manifest.7cc8e792796f578ff2d99930a3391be5.js": "/dcs-weather-app/precache-manifest.7cc8e792796f578ff2d99930a3391be5.js",
     "service-worker.js": "/dcs-weather-app/service-worker.js",
     "static/css/main.b8537f42.chunk.css.map": "/dcs-weather-app/static/css/main.b8537f42.chunk.css.map",
-    "static/js/2.b997c074.chunk.js.LICENSE.txt": "/dcs-weather-app/static/js/2.b997c074.chunk.js.LICENSE.txt"
+    "static/js/2.7c258fff.chunk.js.LICENSE.txt": "/dcs-weather-app/static/js/2.7c258fff.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1ecf6f2e.js",
-    "static/js/2.b997c074.chunk.js",
+    "static/js/2.7c258fff.chunk.js",
     "static/css/main.b8537f42.chunk.css",
-    "static/js/main.1f8fd73f.chunk.js"
+    "static/js/main.ef90564b.chunk.js"
   ]
 }
