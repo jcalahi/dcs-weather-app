@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { faStar as regular } from '@fortawesome/free-regular-svg-icons';
 import { faStar as solid } from '@fortawesome/free-solid-svg-icons';
 // context
@@ -17,11 +18,12 @@ import { ACTION_TYPES } from '../../constants';
 // @TODO add list of cities in context
 
 function TopCities() {
-  const [{ favorites }, dispatch] = useContext(
+  const [{ cities, favorites }, dispatch] = useContext(
     WeatherContext.WeatherStateContext
   );
+  const history = useHistory();
 
-  const { cities, setCities } = useCities();
+  const { isLoadingCities } = useCities();
 
   const getFavoritesName = () => {
     let lookup = {};
@@ -32,7 +34,7 @@ function TopCities() {
   };
 
   const handleRemoveCity = (cityIdx) => {
-    setCities([...cities.slice(0, cityIdx), ...cities.slice(cityIdx + 1)]);
+    dispatch({ type: ACTION_TYPES.REMOVE_CITY, cityIdx });
   };
 
   const renderCities = () => {
@@ -69,7 +71,16 @@ function TopCities() {
           </Card.Body>
           <Card.Overlay className="overlay">
             <Button.Group>
-              <Button>Learn more</Button>
+              <Button
+                onClick={() =>
+                  history.push('/details', {
+                    weather: city,
+                    query: location.name
+                  })
+                }
+              >
+                Learn more
+              </Button>
               <Button onClick={() => handleRemoveCity(idx)}>Remove</Button>
             </Button.Group>
           </Card.Overlay>
@@ -77,8 +88,6 @@ function TopCities() {
       );
     });
   };
-
-  if (cities.length === 0) return null;
 
   return (
     <>

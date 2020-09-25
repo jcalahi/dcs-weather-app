@@ -6,17 +6,18 @@ import Weather from '../../components/Weather';
 import { ACTION_TYPES } from '../../constants';
 
 function SearchResult() {
-  const [{ weather, favorites }, dispatch] = useContext(
+  const [{ searchResult, favorites }, dispatch] = useContext(
     WeatherContext.WeatherStateContext
   );
 
   return (
     <Weather
-      weather={weather}
+      weather={searchResult}
       favorites={favorites}
-      onIconClick={() =>
-        dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather })
+      onToggleFavorites={() =>
+        dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather: searchResult })
       }
+      onReloadClick={() => {}}
     />
   );
 }

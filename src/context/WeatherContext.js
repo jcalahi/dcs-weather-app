@@ -2,16 +2,36 @@ import React, { createContext, useReducer } from 'react';
 import { ACTION_TYPES } from '../constants';
 
 const initialState = {
-  weather: {},
+  searchResult: {}, // weather data from searching
+  weather: {}, // weather data from clicking a card/city
+  cities: [],
   favorites: []
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case ACTION_TYPES.FETCH_WEATHER: {
+    case ACTION_TYPES.SEARCH_RESULT: {
+      return {
+        ...state,
+        searchResult: action.weather
+      };
+    }
+    case ACTION_TYPES.SET_WEATHER_CURRENT: {
       return {
         ...state,
         weather: action.weather
+      };
+    }
+    case ACTION_TYPES.ADD_CITIES: {
+      return {
+        ...state,
+        cities: action.cities
+      };
+    }
+    case ACTION_TYPES.REMOVE_CITY: {
+      return {
+        ...state,
+        cities: [...state.cities.slice(0, action.cityIdx), ...state.cities.slice(action.cityIdx + 1)]
       };
     }
     case ACTION_TYPES.TOGGLE_FAVORITES: {

@@ -67,8 +67,6 @@ function Favorites() {
     });
   };
 
-  if (favorites.length === 0) return null;
-
   return (
     <>
       <div style={{ marginBottom: '2.5rem' }}>
@@ -76,7 +74,7 @@ function Favorites() {
           <Text size="3rem" primary>{`Favorites (${favorites.length})`}</Text>
         </h2>
       </div>
-      <Grid>{renderFavorites()}</Grid>
+      <Grid style={{ minHeight: '14.25rem' }}>{renderFavorites()}</Grid>
     </>
   );
 }

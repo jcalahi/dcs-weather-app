@@ -1,17 +1,15 @@
-import React, { useContext, useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 import Autosuggest from 'react-autosuggest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
-// context
-import WeatherContext from '../../context/WeatherContext';
 // hooks
 import { useHistory } from 'react-router-dom';
 import useLookup from '../../hooks/useLookup';
 import useWeather from '../../hooks/useWeather';
 import { useGeoLocation } from '../../hooks/useGeoLocation';
-// etc
+// useEffect
 import { ACTION_TYPES } from '../../constants';
 
 const SearchWrapper = styled.div`
@@ -124,33 +122,25 @@ const SearchLocation = styled.button`
 `;
 
 function Search() {
-  const history = useHistory();
-  const [, dispatch] = useContext(WeatherContext.WeatherStateContext);
-
   const [query, setQuery] = useState('');
 
-  const { weather, isFetchingCurrent, fetchCurrent } = useWeather();
+  const history = useHistory();
+  const { fetchWeather, isLoadingWeather } = useWeather();
   const { results, isLookingUp, lookup } = useLookup();
   const { position, getPosition } = useGeoLocation();
 
   const debounceSearch = useMemo(() => debounce(lookup, 400), [lookup]);
 
   useEffect(() => {
-    dispatch({ type: ACTION_TYPES.FETCH_WEATHER, weather });
-  }, [weather, dispatch]);
-
-  useEffect(() => {
     if (position) {
       // we navigate to details page once
       // user allows location access
       history.push('/details', {
-        weather,
         query,
         position
       });
-      // fetchCurrent(position);
     }
-  }, [position, history, query, weather]);
+  }, [position, history, query]);
 
   const handleChange = (e, { newValue }) => {
     setQuery(newValue);
@@ -161,7 +151,7 @@ function Search() {
     const searchStr = e.target[0].value;
     // call API if input is not blank
     if (searchStr !== '') {
-      fetchCurrent(searchStr);
+      fetchWeather(searchStr, ACTION_TYPES.SEARCH_RESULT);
     }
   };
   // populates the input value upon mouse/keyboard click
@@ -186,7 +176,7 @@ function Search() {
   // by default, this only works on keydown
   const onSuggestionSelected = (e, { suggestionValue }) => {
     if (e.type === 'click') {
-      fetchCurrent(suggestionValue);
+      fetchWeather(suggestionValue, ACTION_TYPES.SEARCH_RESULT);
     }
   };
 
@@ -211,8 +201,8 @@ function Search() {
           <SearchButton>
             <FontAwesomeIcon
               size="2x"
-              icon={isLookingUp || isFetchingCurrent ? faSpinner : faSearch}
-              spin={isLookingUp || isFetchingCurrent}
+              icon={isLookingUp || isLoadingWeather ? faSpinner : faSearch}
+              spin={isLookingUp || isLoadingWeather}
             />
           </SearchButton>
         </SearchContainer>

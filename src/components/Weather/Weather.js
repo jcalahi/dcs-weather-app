@@ -9,7 +9,8 @@ import {
   faWind,
   faWater,
   faCloud,
-  faTemperatureLow
+  faTemperatureLow,
+  faSync
 } from '@fortawesome/free-solid-svg-icons';
 import { faCloudscale } from '@fortawesome/free-brands-svg-icons';
 // components
@@ -51,7 +52,13 @@ const SpanImage = styled.span`
   }
 `;
 
-function Weather({ weather, favorites, onIconClick }) {
+const ReloadSpan = styled.span`
+  display: 'inline-block';
+  margin-left: 2rem;
+  vertical-align: super;
+`;
+
+function Weather({ weather, favorites, onToggleFavorites, onReloadClick }) {
   const { current, location } = weather;
 
   const getCityName = () => {
@@ -75,18 +82,24 @@ function Weather({ weather, favorites, onIconClick }) {
     <>
       <PageHeader>
         <div>
-          <h2>
+          <h2 style={{ display: 'inline-block' }}>
             <Text size="3rem" primary>
               {getCityName()}
             </Text>
           </h2>
+          <ReloadSpan onClick={onReloadClick}>
+            <Icon
+              icon={faSync}
+              size="2x"
+            />
+          </ReloadSpan>
           <p>
             <Text weight="300" size="2.5rem" secondary>
               {getCurrentDate()}
             </Text>
           </p>
         </div>
-        <span onClick={onIconClick}>
+        <span onClick={onToggleFavorites}>
           <Icon
             color="orange"
             icon={isFavorite() ? solid : regular}
