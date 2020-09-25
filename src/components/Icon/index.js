@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StyledSpan = styled.span`
+  display: inline-block;
+
   ${(props) => props.color && `color: ${props.color}`};
   ${(props) => props.hover && `cursor: pointer`};
 `;

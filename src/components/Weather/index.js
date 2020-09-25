@@ -97,17 +97,13 @@ function Weather({ weather, favorites, onToggleFavorites, loading }) {
             </Text>
           </p>
         </div>
-        {loading ? (
-          <Icon size="3x" icon={faSpinner} spin={loading} />
-        ) : (
-          <Icon
-            hover
-            color="orange"
-            size="3x"
-            icon={isFavorite() ? solid : regular}
-            onIconClick={onToggleFavorites}
-          />
-        )}
+        <Icon
+          hover
+          color="orange"
+          size="3x"
+          icon={isFavorite() ? solid : regular}
+          onIconClick={onToggleFavorites}
+        />
       </PageHeader>
       <PageBody>
         <PageBodyLeft>
