@@ -88,10 +88,7 @@ function Weather({ weather, favorites, onToggleFavorites, onReloadClick }) {
             </Text>
           </h2>
           <ReloadSpan onClick={onReloadClick}>
-            <Icon
-              icon={faSync}
-              size="2x"
-            />
+            <Icon icon={faSync} size="2x" />
           </ReloadSpan>
           <p>
             <Text weight="300" size="2.5rem" secondary>

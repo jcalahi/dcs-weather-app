@@ -31,7 +31,10 @@ const reducer = (state, action) => {
     case ACTION_TYPES.REMOVE_CITY: {
       return {
         ...state,
-        cities: [...state.cities.slice(0, action.cityIdx), ...state.cities.slice(action.cityIdx + 1)]
+        cities: [
+          ...state.cities.slice(0, action.cityIdx),
+          ...state.cities.slice(action.cityIdx + 1)
+        ]
       };
     }
     case ACTION_TYPES.TOGGLE_FAVORITES: {
