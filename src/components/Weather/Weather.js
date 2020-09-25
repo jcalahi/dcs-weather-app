@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {
   faStar as regular,
@@ -12,14 +12,10 @@ import {
   faTemperatureLow
 } from '@fortawesome/free-solid-svg-icons';
 import { faCloudscale } from '@fortawesome/free-brands-svg-icons';
-// context
-import WeatherContext from '../../context/WeatherContext';
 // components
-import Text from '../../components/Text';
-import Icon from '../../components/Icon';
-import Tile from '../../components/Tile';
-// etc
-import { ACTION_TYPES } from '../../constants';
+import Icon from '../Icon';
+import Text from '../Text';
+import Tile from '../Tile';
 
 const PageHeader = styled.header`
   display: flex;
@@ -55,11 +51,7 @@ const SpanImage = styled.span`
   }
 `;
 
-function Weather() {
-  const [{ weather, favorites }, dispatch] = useContext(
-    WeatherContext.WeatherStateContext
-  );
-  console.log(weather);
+function Weather({ weather, favorites, onIconClick }) {
   const { current, location } = weather;
 
   const getCityName = () => {
@@ -94,11 +86,7 @@ function Weather() {
             </Text>
           </p>
         </div>
-        <span
-          onClick={() =>
-            dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather })
-          }
-        >
+        <span onClick={onIconClick}>
           <Icon
             color="orange"
             icon={isFavorite() ? solid : regular}

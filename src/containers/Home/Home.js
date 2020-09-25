@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // components
 import Container from '../../components/Container';
 import Search from '../Search';
-import Weather from '../Weather';
+import SearchResult from '../SearchResult';
 import Favorites from '../Favorites';
 import TopCities from '../TopCities';
 
@@ -21,7 +21,7 @@ function Home() {
       </SegmentWrapper>
       <main>
         <SegmentWrapper>
-          <Weather />
+          <SearchResult />
         </SegmentWrapper>
         <SegmentWrapper>
           <Favorites />

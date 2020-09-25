@@ -16,7 +16,9 @@ export default function useForecast(query) {
 
     try {
       setIsFetchingForecast(true);
-      const { data } = await axios.get(`${WEATHER_BASE_URL}/forecast`, { params });
+      const { data } = await axios.get(`${WEATHER_BASE_URL}/forecast`, {
+        params
+      });
       console.log(data);
     } catch (error) {
       setErrorForecastMsg(error);

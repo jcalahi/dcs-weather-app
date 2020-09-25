@@ -50,10 +50,14 @@ function Favorites() {
           </Card.Body>
           <Card.Overlay className="overlay">
             <Button.Group>
-              <Button onClick={() => history.push('/details', {
-                weather: favorite,
-                query: location.name
-              })}>
+              <Button
+                onClick={() =>
+                  history.push('/details', {
+                    weather: favorite,
+                    query: location.name
+                  })
+                }
+              >
                 Learn more
               </Button>
             </Button.Group>
