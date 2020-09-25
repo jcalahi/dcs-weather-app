@@ -1,34 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
 // components
 import Container from '../../components/Container';
+import Panel from '../../components/Panel';
 import Search from '../Search';
 import SearchResult from '../SearchResult';
 import Favorites from '../Favorites';
 import TopCities from '../TopCities';
 
-const SegmentWrapper = styled.div`
-  margin-bottom: 2.5rem;
-`;
-
 function Home() {
   return (
     <Container>
-      <SegmentWrapper>
+      <Panel>
         <header>
           <Search />
         </header>
-      </SegmentWrapper>
+      </Panel>
       <main>
-        <SegmentWrapper>
+        <Panel>
           <SearchResult />
-        </SegmentWrapper>
-        <SegmentWrapper>
+        </Panel>
+        <Panel>
           <Favorites />
-        </SegmentWrapper>
-        <SegmentWrapper>
+        </Panel>
+        <Panel>
+          <Panel.Title>Top 15 cities by population (A-Z)</Panel.Title>
           <TopCities />
-        </SegmentWrapper>
+        </Panel>
       </main>
     </Container>
   );

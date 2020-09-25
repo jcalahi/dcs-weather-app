@@ -3,7 +3,7 @@ import axios from 'axios';
 import { WEATHER_BASE_URL } from '../constants';
 
 export default function useForecast(query) {
-  const [forecast, setForecast] = useState([]);
+  const [forecast, setForecast] = useState({});
   const [isFetchingForecast, setIsFetchingForecast] = useState(false);
   const [errorForecastMsg, setErrorForecastMsg] = useState('');
 
@@ -19,7 +19,7 @@ export default function useForecast(query) {
       const { data } = await axios.get(`${WEATHER_BASE_URL}/forecast`, {
         params
       });
-      console.log(data);
+      setForecast(data.forecast);
     } catch (error) {
       setErrorForecastMsg(error);
     } finally {

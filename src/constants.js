@@ -1,4 +1,13 @@
 export const WEATHER_BASE_URL = 'https://api.weatherstack.com';
+export const WEEKDAYS = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday'
+];
 export const ACTION_TYPES = {
   SEARCH_RESULT: 'SEARCH_RESULT',
   SET_WEATHER_CURRENT: 'SET_WEATHER_CURRENT',

@@ -43,7 +43,7 @@ function TopCities() {
     return cities.map((city, idx) => {
       const { current, location } = city;
       return (
-        <Card key={idx}>
+        <Card key={idx} hover>
           <Card.Header title={location.name} subtitle={location.region}>
             <span
               onClick={() =>
@@ -89,18 +89,7 @@ function TopCities() {
     });
   };
 
-  return (
-    <>
-      <div style={{ marginBottom: '2.5rem' }}>
-        <h2>
-          <Text size="3rem" primary>
-            Top 15 cities by population (A-Z)
-          </Text>
-        </h2>
-      </div>
-      <Grid>{renderCities()}</Grid>
-    </>
-  );
+  return <Grid>{renderCities()}</Grid>;
 }
 
 export default TopCities;

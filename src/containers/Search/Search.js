@@ -136,8 +136,7 @@ function Search() {
       // we navigate to details page once
       // user allows location access
       history.push('/details', {
-        query,
-        position
+        query: position
       });
     }
   }, [position, history, query]);

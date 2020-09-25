@@ -11,6 +11,11 @@ export default function useCities() {
   const [isLoadingCities, setIsLoadingCities] = useState(false);
   const [errorCitiesMsg, setErrorCitiesMsg] = useState();
 
+  // const fetchStoredData = () => {
+  //   const store = window.localStorage.getItem('storedCities');
+  //   dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: JSON.parse(store)});
+  // };
+
   const fetchData = async () => {
     const { data: topCities } = await axios.get('cities.json');
     const query = topCities
@@ -23,14 +28,16 @@ export default function useCities() {
     };
 
     try {
-      setIsLoadingCities(true);
-      const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, {
-        params
-      });
-      const sortedCities = data.sort((a, b) =>
-        a.location.name.localeCompare(b.location.name)
-      );
-      dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: sortedCities });
+      // setIsLoadingCities(true);
+      // const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, {
+      //   params
+      // });
+      // const sortedCities = data.sort((a, b) =>
+      //   a.location.name.localeCompare(b.location.name)
+      // );
+      // window.localStorage.setItem('storedCities', JSON.stringify(sortedCities));
+      const data = window.localStorage.getItem('storedCities');
+      dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: JSON.parse(data) });
     } catch (error) {
       setErrorCitiesMsg(error);
     } finally {
@@ -40,7 +47,8 @@ export default function useCities() {
 
   useState(() => {
     if (cities.length === 0) {
-      // fetchData();
+      // fetchStoredData();
+      fetchData();
     }
   }, []);
 

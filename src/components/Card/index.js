@@ -10,14 +10,16 @@ const Card = styled.div`
   position: relative;
   transition: all 0.2s ease-out;
 
-  &:hover {
+  ${(props) =>
+    props.hover &&
+    `&:hover {
     border: 1px solid deepskyblue;
     transform: translateY(-10px);
     .overlay {
       opacity: 0.8;
       top: 40%;
     }
-  }
+  }`}
 `;
 
 Card.Header = Header;

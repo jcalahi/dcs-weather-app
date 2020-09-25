@@ -23,7 +23,7 @@ function Favorites() {
     return favorites.map((favorite, idx) => {
       const { current, location } = favorite;
       return (
-        <Card key={idx}>
+        <Card key={idx} hover>
           <Card.Header title={location.name} subtitle={location.region}>
             <span
               onClick={() =>
