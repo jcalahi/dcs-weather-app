@@ -1,5 +1,10 @@
 import React from 'react';
-import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons';
+import {
+  faSun,
+  faMoon,
+  faFolderOpen
+} from '@fortawesome/free-regular-svg-icons';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 // context
 import useForecast from '../../hooks/useForecast';
 // components
@@ -7,11 +12,12 @@ import Card from '../Card';
 import Grid from '../Grid';
 import Text from '../Text';
 import Icon from '../Icon';
+import Empty from '../Empty';
 // etc
 import { WEEKDAYS } from '../../constants';
 
 function Forecast({ cityData }) {
-  const { forecast, isFetchingForecast } = useForecast(cityData);
+  const { forecast, isLoadingForecoast } = useForecast(cityData);
 
   const renderForecast = () => {
     const dates = [];
@@ -73,29 +79,22 @@ function Forecast({ cityData }) {
       );
     }
     return dates;
-    // return forecast.map((favorite, idx) => {
-    //   const { current, location } = favorite;
-    //   return (
-    //     <Card key={idx}>
-    //       <Card.Header title={location.name} subtitle={location.region} />
-    //       <Card.Body>
-    //         <div>
-    //           <Text size="5rem" secondary>
-    //             {current.temperature}&deg;
-    //           </Text>
-    //         </div>
-    //         <p>
-    //           <Text size="1.5rem" weight="200" secondary>
-    //             {current.weather_descriptions[0]}
-    //           </Text>
-    //         </p>
-    //       </Card.Body>
-    //     </Card>
-    //   );
-    // });
   };
-  console.log(forecast);
-  return <Grid>{renderForecast()}</Grid>;
+
+  return (
+    <>
+      {Object.keys(forecast).length === 0 ? (
+        <Empty
+          size="6x"
+          text={isLoadingForecoast ? 'Loading forecast...' : 'No forecast'}
+          icon={isLoadingForecoast ? faSpinner : faFolderOpen}
+          spin={isLoadingForecoast}
+        />
+      ) : (
+        <Grid style={{ minHeight: '14.25rem' }}>{renderForecast()}</Grid>
+      )}
+    </>
+  );
 }
 
 export default Forecast;

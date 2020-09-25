@@ -7,8 +7,6 @@ import { WEATHER_BASE_URL, ACTION_TYPES } from '../constants';
 
 export default function useWeather() {
   const [, dispatch] = useContext(WeatherContext.WeatherStateContext);
-
-  const [isLoadingWeather, setIsLoadingWeather] = useState(false);
   const [errorMessage, setErrorMessage] = useState({});
 
   const fetchWeather = useCallback(
@@ -19,7 +17,7 @@ export default function useWeather() {
       };
 
       try {
-        setIsLoadingWeather(true);
+        dispatch({ type: ACTION_TYPES.LOADING_WEATHER, loading: true });
         const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, {
           params
         });
@@ -31,15 +29,13 @@ export default function useWeather() {
       } catch (error) {
         setErrorMessage(error);
       } finally {
-        setIsLoadingWeather(false);
+        dispatch({ type: ACTION_TYPES.LOADING_WEATHER, loading: false });
       }
     },
     [dispatch]
   );
-
   return {
     fetchWeather,
-    isLoadingWeather,
     errorMessage
   };
 }

@@ -2,20 +2,20 @@ import React, { useContext, useEffect } from 'react';
 // context
 import WeatherContext from '../../context/WeatherContext';
 // hooks
-import useForecast from '../../hooks/useForecast';
 import useWeather from '../../hooks/useWeather';
 // components
 import Container from '../../components/Container';
 import Panel from '../../components/Panel';
 import Weather from '../../components/Weather';
 import Forecast from '../../components/Forecast';
+import Notes from '../../components/Notes';
 // etc
 import { ACTION_TYPES } from '../../constants';
 
 function City(props) {
   const { query } = props.history.location.state;
 
-  const [{ weather, favorites }, dispatch] = useContext(
+  const [{ weather, loadingWeather, favorites }, dispatch] = useContext(
     WeatherContext.WeatherStateContext
   );
 
@@ -31,6 +31,7 @@ function City(props) {
     <Container>
       <Panel>
         <Weather
+          loading={loadingWeather}
           weather={weather}
           favorites={favorites}
           onToggleFavorites={() =>
@@ -44,6 +45,7 @@ function City(props) {
       </Panel>
       <Panel>
         <Panel.Title>Notes</Panel.Title>
+        <Notes />
       </Panel>
     </Container>
   );

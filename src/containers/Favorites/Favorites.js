@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faFolderOpen } from '@fortawesome/free-regular-svg-icons';
 // context
 import WeatherContext from '../../context/WeatherContext';
 // hooks
@@ -12,6 +13,7 @@ import Button from '../../components/Button';
 import Text from '../../components/Text';
 // etc
 import { ACTION_TYPES } from '../../constants';
+import Empty from '../../components/Empty';
 
 function Favorites() {
   const [{ favorites }, dispatch] = useContext(
@@ -25,16 +27,18 @@ function Favorites() {
       return (
         <Card key={idx} hover>
           <Card.Header title={location.name} subtitle={location.region}>
-            <span
-              onClick={() =>
+            <Icon
+              hover
+              color="orange"
+              size="2x"
+              icon={faStar}
+              onIconClick={() =>
                 dispatch({
                   type: ACTION_TYPES.TOGGLE_FAVORITES,
                   weather: favorite
                 })
               }
-            >
-              <Icon color="orange" icon={faStar} size="2x" />
-            </span>
+            />
           </Card.Header>
           <Card.Body>
             <div>
@@ -74,7 +78,11 @@ function Favorites() {
           <Text size="3rem" primary>{`Favorites (${favorites.length})`}</Text>
         </h2>
       </div>
-      <Grid style={{ minHeight: '14.25rem' }}>{renderFavorites()}</Grid>
+      {favorites.length === 0 ? (
+        <Empty size="6x" text="No favorites" icon={faFolderOpen} />
+      ) : (
+        <Grid style={{ minHeight: '14.25rem' }}>{renderFavorites()}</Grid>
+      )}
     </>
   );
 }

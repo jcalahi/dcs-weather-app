@@ -21,6 +21,7 @@ const Button = styled.button`
   transition: all 0.2s ease-out;
 
   &:hover {
+    cursor: pointer;
     border: 1px solid deepskyblue;
     color: deepskyblue;
   }

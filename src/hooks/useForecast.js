@@ -4,7 +4,7 @@ import { WEATHER_BASE_URL } from '../constants';
 
 export default function useForecast(query) {
   const [forecast, setForecast] = useState({});
-  const [isFetchingForecast, setIsFetchingForecast] = useState(false);
+  const [isLoadingForecoast, setIsLoadingForecast] = useState(false);
   const [errorForecastMsg, setErrorForecastMsg] = useState('');
 
   const fetchData = useCallback(async () => {
@@ -15,7 +15,7 @@ export default function useForecast(query) {
     };
 
     try {
-      setIsFetchingForecast(true);
+      setIsLoadingForecast(true);
       const { data } = await axios.get(`${WEATHER_BASE_URL}/forecast`, {
         params
       });
@@ -23,7 +23,7 @@ export default function useForecast(query) {
     } catch (error) {
       setErrorForecastMsg(error);
     } finally {
-      setIsFetchingForecast(false);
+      setIsLoadingForecast(false);
     }
   }, [query]);
 
@@ -33,6 +33,7 @@ export default function useForecast(query) {
 
   return {
     forecast,
-    isFetchingForecast
+    isLoadingForecoast,
+    errorForecastMsg
   };
 }

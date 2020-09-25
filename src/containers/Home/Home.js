@@ -1,7 +1,6 @@
 import React from 'react';
 // components
 import Container from '../../components/Container';
-import Panel from '../../components/Panel';
 import Search from '../Search';
 import SearchResult from '../SearchResult';
 import Favorites from '../Favorites';
@@ -10,22 +9,21 @@ import TopCities from '../TopCities';
 function Home() {
   return (
     <Container>
-      <Panel>
+      <Container.Panel>
         <header>
           <Search />
         </header>
-      </Panel>
+      </Container.Panel>
       <main>
-        <Panel>
+        <Container.Panel>
           <SearchResult />
-        </Panel>
-        <Panel>
+        </Container.Panel>
+        <Container.Panel>
           <Favorites />
-        </Panel>
-        <Panel>
-          <Panel.Title>Top 15 cities by population (A-Z)</Panel.Title>
+        </Container.Panel>
+        <Container.Panel>
           <TopCities />
-        </Panel>
+        </Container.Panel>
       </main>
     </Container>
   );

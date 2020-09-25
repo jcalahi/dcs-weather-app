@@ -1,7 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { faStar as regular } from '@fortawesome/free-regular-svg-icons';
-import { faStar as solid } from '@fortawesome/free-solid-svg-icons';
+import {
+  faStar as regular,
+  faFolderOpen
+} from '@fortawesome/free-regular-svg-icons';
+import { faStar as solid, faSpinner } from '@fortawesome/free-solid-svg-icons';
 // context
 import WeatherContext from '../../context/WeatherContext';
 // hooks
@@ -12,18 +15,24 @@ import Card from '../../components/Card';
 import Text from '../../components/Text';
 import Icon from '../../components/Icon';
 import Button from '../../components/Button';
+import Empty from '../../components/Empty';
 // etc
 import { ACTION_TYPES } from '../../constants';
 
 // @TODO add list of cities in context
 
 function TopCities() {
-  const [{ cities, favorites }, dispatch] = useContext(
+  const [{ cities, loadingCities, favorites }, dispatch] = useContext(
     WeatherContext.WeatherStateContext
   );
   const history = useHistory();
+  const { fetchCities } = useCities();
 
-  const { isLoadingCities } = useCities();
+  useEffect(() => {
+    if (cities.length === 0) {
+      fetchCities();
+    }
+  }, [cities, fetchCities]);
 
   const getFavoritesName = () => {
     let lookup = {};
@@ -45,17 +54,15 @@ function TopCities() {
       return (
         <Card key={idx} hover>
           <Card.Header title={location.name} subtitle={location.region}>
-            <span
-              onClick={() =>
+            <Icon
+              hover
+              color="orange"
+              size="2x"
+              icon={fav[location.name] ? solid : regular}
+              onIconClick={() =>
                 dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather: city })
               }
-            >
-              <Icon
-                color="orange"
-                icon={fav[location.name] ? solid : regular}
-                size="2x"
-              />
-            </span>
+            />
           </Card.Header>
           <Card.Body>
             <div>
@@ -89,7 +96,27 @@ function TopCities() {
     });
   };
 
-  return <Grid>{renderCities()}</Grid>;
+  return (
+    <>
+      <div style={{ marginBottom: '2.5rem' }}>
+        <h2>
+          <Text size="3rem" primary>
+            Top 15 cities by Population (A-Z)
+          </Text>
+        </h2>
+      </div>
+      {loadingCities ? (
+        <Empty
+          size="6x"
+          text={loadingCities ? 'Loading cities...' : 'No cities found'}
+          icon={loadingCities ? faSpinner : faFolderOpen}
+          spin={loadingCities}
+        />
+      ) : (
+        <Grid>{renderCities()}</Grid>
+      )}
+    </>
+  );
 }
 
 export default TopCities;

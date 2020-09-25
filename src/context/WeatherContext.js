@@ -5,7 +5,9 @@ const initialState = {
   searchResult: {}, // weather data from searching
   weather: {}, // weather data from clicking a card/city
   cities: [],
-  favorites: []
+  favorites: [],
+  loadingCities: false,
+  loadingWeather: false
 };
 
 const reducer = (state, action) => {
@@ -61,6 +63,18 @@ const reducer = (state, action) => {
           ]
         };
       }
+    }
+    case ACTION_TYPES.LOADING_CITIES: {
+      return {
+        ...state,
+        loadingCities: action.loading
+      };
+    }
+    case ACTION_TYPES.LOADING_WEATHER: {
+      return {
+        ...state,
+        loadingWeather: action.loading
+      };
     }
     default:
       return state;
