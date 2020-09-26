@@ -14,6 +14,7 @@ import Text from '../../components/Text';
 // etc
 import { ACTION_TYPES } from '../../constants';
 import Empty from '../../components/Empty';
+import Header from '../../components/Card/Header';
 
 function Favorites() {
   const [{ favorites }, dispatch] = useContext(
@@ -73,11 +74,11 @@ function Favorites() {
 
   return (
     <>
-      <div style={{ marginBottom: '2.5rem' }}>
+      <Header>
         <h2>
           <Text size="3rem" primary>{`Favorites (${favorites.length})`}</Text>
         </h2>
-      </div>
+      </Header>
       {favorites.length === 0 ? (
         <Empty size="6x" text="No favorites" icon={faFolderOpen} />
       ) : (

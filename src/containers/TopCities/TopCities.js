@@ -16,6 +16,7 @@ import Text from '../../components/Text';
 import Icon from '../../components/Icon';
 import Button from '../../components/Button';
 import Empty from '../../components/Empty';
+import Header from '../../components/Header';
 // etc
 import { ACTION_TYPES } from '../../constants';
 
@@ -98,13 +99,13 @@ function TopCities() {
 
   return (
     <>
-      <div style={{ marginBottom: '2.5rem' }}>
+      <Header>
         <h2>
           <Text size="3rem" primary>
             Top 15 cities by Population (A-Z)
           </Text>
         </h2>
-      </div>
+      </Header>
       {loadingCities ? (
         <Empty
           size="6x"

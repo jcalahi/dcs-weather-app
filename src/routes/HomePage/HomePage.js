@@ -1,10 +1,10 @@
 import React from 'react';
 // components
 import Container from '../../components/Container';
-import Search from '../Search';
-import CityWeather from '../CityWeather';
-import Favorites from '../Favorites';
-import TopCities from '../TopCities';
+import Search from '../../containers/Search';
+import CityWeather from '../../containers/CityWeather';
+import Favorites from '../../containers/Favorites';
+import TopCities from '../../containers/TopCities';
 
 function HomePage() {
   return (

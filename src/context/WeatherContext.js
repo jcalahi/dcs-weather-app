@@ -6,6 +6,7 @@ const initialState = {
   weather: {}, // weather data from clicking a card/city
   cities: [],
   favorites: [],
+  notes: [],
   loadingCities: false,
   loadingWeather: false
 };
@@ -75,6 +76,34 @@ const reducer = (state, action) => {
         ...state,
         loadingWeather: action.loading
       };
+    }
+    case ACTION_TYPES.ADD_NOTE: {
+      return {
+        ...state,
+        notes: [...state.notes, action.payload]
+      }
+    }
+    case ACTION_TYPES.REMOVE_NOTE: {
+      const filteredNotes = state.notes.filter((note) => note.id !== action.payload.id);
+      return {
+        ...state,
+        notes: filteredNotes
+      };
+    }
+    case ACTION_TYPES.EDIT_NOTE: {
+      const idx = state.notes.findIndex((note) => note.id === action.payload.id);
+      return {
+        ...state,
+        notes: [
+          ...state.notes.slice(0, idx),
+          {
+            ...state.notes[idx],
+            note: action.payload.note,
+            editedAt: action.payload.editedAt
+          },
+          ...state.notes.slice(idx + 1)
+        ]
+      }
     }
     default:
       return state;

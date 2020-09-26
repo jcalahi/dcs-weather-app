@@ -8,13 +8,14 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 // context
 import useForecast from '../../hooks/useForecast';
 // components
-import Card from '../Card';
-import Grid from '../Grid';
-import Text from '../Text';
-import Icon from '../Icon';
-import Empty from '../Empty';
+import Card from '../../components/Card';
+import Grid from '../../components/Grid';
+import Text from '../../components/Text';
+import Icon from '../../components/Icon';
+import Empty from '../../components/Empty';
 // etc
 import { WEEKDAYS } from '../../constants';
+import Header from '../../components/Header';
 
 function Forecast({ cityData }) {
   const { forecast, isLoadingForecoast } = useForecast(cityData);
@@ -83,6 +84,11 @@ function Forecast({ cityData }) {
 
   return (
     <>
+      <Header>
+        <h2>
+          <Text size="3rem" primary>7-day Forecast</Text>
+        </h2>
+      </Header>
       {Object.keys(forecast).length === 0 ? (
         <Empty
           size="6x"

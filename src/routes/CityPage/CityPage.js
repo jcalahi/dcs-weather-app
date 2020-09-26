@@ -4,15 +4,15 @@ import { useHistory } from 'react-router-dom';
 import useWeather from '../../hooks/useWeather';
 // components
 import Container from '../../components/Container';
-import Forecast from '../../components/Forecast';
-import Notes from '../../components/Notes';
+import Forecast from '../../containers/Forecast';
+import Notes from '../../containers/Notes';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
 import Text from '../../components/Text';
 // etc
 import { ACTION_TYPES } from '../../constants';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import CityWeather from '../CityWeather';
+import CityWeather from '../../containers/CityWeather';
 
 function CityPage(props) {
   const { query } = props.history.location.state;

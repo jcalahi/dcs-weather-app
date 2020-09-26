@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // context
 import WeatherContext from './context/WeatherContext';
 // components
-import HomePage from './containers/HomePage';
-import CityPage from './containers/CityPage';
+import HomePage from './routes/HomePage';
+import CityPage from './routes/CityPage';
 // @todo add 404 catch all route
 function App() {
   return (
