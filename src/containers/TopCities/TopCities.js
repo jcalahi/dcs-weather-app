@@ -27,7 +27,7 @@ function TopCities() {
     WeatherContext.WeatherStateContext
   );
   const history = useHistory();
-  const { fetchCities } = useCities();
+  const { fetchCities, errorCitiesMsg } = useCities();
 
   useEffect(() => {
     if (cities.length === 0) {

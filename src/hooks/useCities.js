@@ -45,14 +45,18 @@ export default function useCities() {
           rank: cityPopulation[city.location.name].rank
         };
       });
-      // window.localStorage.setItem('storedCities', JSON.stringify(sortedCities));
-      // const data = window.localStorage.getItem('storedCities');
-      // dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: JSON.parse(data) });
+      // store for offline reference
+      window.localStorage.setItem('storedCities', JSON.stringify(withPopulation));
+
+      dispatch({ type: ACTION_TYPES.LOADING_CITIES, loading: false });
       dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: withPopulation });
     } catch (error) {
-      setErrorCitiesMsg(error);
-    } finally {
+      const store = window.localStorage.getItem('storedCities');
+
       dispatch({ type: ACTION_TYPES.LOADING_CITIES, loading: false });
+      dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: JSON.parse(store) });
+
+      setErrorCitiesMsg(error);
     }
   }, [dispatch]);
 

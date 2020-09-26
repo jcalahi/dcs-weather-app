@@ -19,11 +19,16 @@ export default function useForecast(query) {
       const { data } = await axios.get(`${WEATHER_BASE_URL}/forecast`, {
         params
       });
+      // store for offline reference
+      window.localStorage.setItem('storedForecast', JSON.stringify(data.forecast));
+      setIsLoadingForecast(false);
       setForecast(data.forecast);
     } catch (error) {
-      setErrorForecastMsg(error);
-    } finally {
+      const store = window.localStorage.getItem('storedForecast');
+
       setIsLoadingForecast(false);
+      setForecast(JSON.parse(store));
+      setErrorForecastMsg(error);
     }
   }, [query]);
 

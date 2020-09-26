@@ -26,7 +26,6 @@ function Notes() {
   const [{ weather, notes, loadingWeather }, dispatch] = useContext(
     WeatherContext.WeatherStateContext
   );
-
   const checkNotesContent = () => {
     const { location } = weather;
     const filteredNotes = notes.filter((note) => note.name === location.name);
@@ -44,7 +43,6 @@ function Notes() {
   };
 
   const renderNotes = (filteredNotes) => {
-    console.log(filteredNotes);
     return filteredNotes.map((item, idx) => {
       return (
         <Card key={`${item.name}-${idx}`}>
@@ -65,7 +63,6 @@ function Notes() {
           </Card.Header>
           <Card.Body style={{ marginBottom: '1rem', marginTop: '1rem' }}>
             <TextArea value={item.note} onBlur={(value) => {
-              console.log(value);
               // only update when value has changed
               if (value !== '' && value !== item.note) {
                 dispatch({
@@ -88,14 +85,16 @@ function Notes() {
                 {item.createdAt}
               </Text>
             </div>
-            <div>
-              <Text size="1.5rem" weight="600" secondary>
-                Edited at:{' '}
-              </Text>
-              <Text size="1.5rem" secondary>
-                {item.editedAt}
-              </Text>
-            </div>
+            {item.editedAt && (
+              <div>
+                <Text size="1.5rem" weight="600" secondary>
+                  Edited at:{' '}
+                </Text>
+                <Text size="1.5rem" secondary>
+                  {item.editedAt}
+                </Text>
+              </div>
+            )}
           </div>
         </Card>
       );

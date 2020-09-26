@@ -28,7 +28,8 @@ const reducer = (state, action) => {
     case ACTION_TYPES.ADD_CITIES: {
       return {
         ...state,
-        cities: action.cities
+        cities: action.cities,
+        error: action.error
       };
     }
     case ACTION_TYPES.REMOVE_CITY: {

@@ -24,12 +24,25 @@ export default function useWeather() {
         if (data.error) {
           setErrorMessage(data.error.info);
         } else {
+          // store for offline reference
+          ACTION_TYPES[actionType] === 'SEARCH_RESULT'
+            ? window.localStorage.setItem('storedSearch', JSON.stringify(data))
+            : window.localStorage.setItem(
+                'storedWeather',
+                JSON.stringify(data)
+              );
+          dispatch({ type: ACTION_TYPES.LOADING_WEATHER, loading: false });
           dispatch({ type: ACTION_TYPES[actionType], weather: data });
         }
       } catch (error) {
-        setErrorMessage(error);
-      } finally {
+        const store = window.localStorage.getItem('storedWeather');
+
         dispatch({ type: ACTION_TYPES.LOADING_WEATHER, loading: false });
+        dispatch({
+          type: ACTION_TYPES[actionType],
+          weather: JSON.parse(store)
+        });
+        setErrorMessage(error);
       }
     },
     [dispatch]
