@@ -14,7 +14,7 @@ import Text from '../../components/Text';
 // etc
 import { ACTION_TYPES } from '../../constants';
 import Empty from '../../components/Empty';
-import Header from '../../components/Card/Header';
+import Header from '../../components/Header';
 
 function Favorites() {
   const [{ favorites }, dispatch] = useContext(
@@ -47,7 +47,7 @@ function Favorites() {
                 {current.temperature}&deg;
               </Text>
             </div>
-            <p>
+            <p style={{ minHeight: '3.7rem' }}>
               <Text size="1.5rem" weight="200" secondary>
                 {current.weather_descriptions[0]}
               </Text>

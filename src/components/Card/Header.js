@@ -16,7 +16,7 @@ function Header({ title, subtitle, children }) {
             {title}
           </Text>
         </h2>
-        <p>
+        <p style={{ minHeight: '1.8rem' }}>
           <Text size="1.5rem" weight="200" secondary>
             {subtitle}
           </Text>

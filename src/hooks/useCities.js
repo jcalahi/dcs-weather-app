@@ -11,6 +11,16 @@ export default function useCities() {
 
   const fetchCities = useCallback(async () => {
     const { data: topCities } = await axios.get('cities.json');
+    // mapping to get population and rank
+    let cityPopulation = {};
+    for (let city of topCities) {
+      cityPopulation[city.Name] = {
+        population: city.Population,
+        rank: city.rank
+      }
+    }
+
+    // build a string for bulk queries
     const query = topCities
       .reduce((prev, curr) => [...prev, curr.Name], [])
       .join(';');
@@ -28,10 +38,17 @@ export default function useCities() {
       const sortedCities = data.sort((a, b) =>
         a.location.name.localeCompare(b.location.name)
       );
+      const withPopulation = sortedCities.map((city, idx) => {
+        return {
+          ...city,
+          population: cityPopulation[city.location.name].population,
+          rank: cityPopulation[city.location.name].rank
+        };
+      });
       // window.localStorage.setItem('storedCities', JSON.stringify(sortedCities));
       // const data = window.localStorage.getItem('storedCities');
       // dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: JSON.parse(data) });
-      dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: sortedCities });
+      dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: withPopulation });
     } catch (error) {
       setErrorCitiesMsg(error);
     } finally {

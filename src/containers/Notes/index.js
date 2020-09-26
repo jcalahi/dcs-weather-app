@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import uniqueId from 'lodash/uniqueId';
 import { faFolderOpen } from '@fortawesome/free-regular-svg-icons';
-import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrashAlt, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import WeatherContext from '../../context/WeatherContext';
 
@@ -12,6 +12,7 @@ import Text from '../../components/Text';
 import Icon from '../../components/Icon';
 import Header from '../../components/Header';
 import Grid from '../../components/Grid';
+import TextArea from '../../components/TextArea';
 
 import { ACTION_TYPES } from '../../constants';
 
@@ -22,14 +23,29 @@ const NotesHeader = styled(Header)`
 `;
 
 function Notes() {
-  const [{ weather, notes }, dispatch] = useContext(
+  const [{ weather, notes, loadingWeather }, dispatch] = useContext(
     WeatherContext.WeatherStateContext
   );
 
-  const renderNotes = () => {
-    console.log(weather);
-    console.log(notes);
-    return notes.map((item, idx) => {
+  const checkNotesContent = () => {
+    const { location } = weather;
+    const filteredNotes = notes.filter((note) => note.name === location.name);
+
+    if (filteredNotes.length === 0) {
+      return (
+        <Empty
+          size="6x"
+          text="Add some notes here'"
+          icon={faFolderOpen}
+        />
+      );
+    }
+    return <Grid>{renderNotes(filteredNotes)}</Grid>
+  };
+
+  const renderNotes = (filteredNotes) => {
+    console.log(filteredNotes);
+    return filteredNotes.map((item, idx) => {
       return (
         <Card key={`${item.name}-${idx}`}>
           <Card.Header title={item.dateCreated}>
@@ -48,26 +64,20 @@ function Notes() {
             />
           </Card.Header>
           <Card.Body style={{ marginBottom: '1rem', marginTop: '1rem' }}>
-            <textarea
-              value={item.note}
-              autoFocus
-              style={{ resize: 'none', width: '100%' }}
-              rows="5"
-              onBlur={(e) => {
-                const text = e.target.value;
-                // only update when value has changed
-                if (text !== '' && text !== item.note) {
-                  dispatch({
-                    type: ACTION_TYPES.EDIT_NOTE,
-                    payload: {
-                      id: item.id,
-                      note: e.target.value,
-                      editedAt: new Date().toLocaleTimeString()
-                    }
-                  });
-                }
-              }}
-            />
+            <TextArea value={item.note} onBlur={(value) => {
+              console.log(value);
+              // only update when value has changed
+              if (value !== '' && value !== item.note) {
+                dispatch({
+                  type: ACTION_TYPES.EDIT_NOTE,
+                  payload: {
+                    id: item.id,
+                    note: value,
+                    editedAt: new Date().toLocaleTimeString()
+                  }
+                });
+              }
+            }} />
           </Card.Body>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div>
@@ -117,11 +127,14 @@ function Notes() {
           hover
         />
       </NotesHeader>
-      {notes.length === 0 ? (
-        <Empty size="6x" text="No notes" icon={faFolderOpen} />
-      ) : (
-        <Grid>{renderNotes()}</Grid>
-      )}
+      {loadingWeather ? (
+        <Empty
+          size="6x"
+          text={loadingWeather ? 'Loading notes...' : 'Add some notes here'}
+          icon={loadingWeather ? faSpinner : faFolderOpen}
+          spin={loadingWeather}
+        />
+      ) : checkNotesContent()}
     </>
   );
 }

@@ -17,7 +17,7 @@ const Card = styled.div`
     transform: translateY(-10px);
     .overlay {
       opacity: 0.8;
-      top: 40%;
+      top: 33%;
     }
   }`}
 `;

@@ -5,12 +5,16 @@ import Search from '../../containers/Search';
 import CityWeather from '../../containers/CityWeather';
 import Favorites from '../../containers/Favorites';
 import TopCities from '../../containers/TopCities';
+import Text from '../../components/Text';
 
 function HomePage() {
   return (
     <Container>
       <Container.Panel>
         <header>
+          <h1 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+            <Text size="3.5rem" primary>Weather App</Text>
+          </h1>
           <Search />
         </header>
       </Container.Panel>

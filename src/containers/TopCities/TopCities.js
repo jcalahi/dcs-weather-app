@@ -49,9 +49,11 @@ function TopCities() {
 
   const renderCities = () => {
     const fav = getFavoritesName();
+    const addComma = /\B(?=(\d{3})+(?!\d))/g;
 
     return cities.map((city, idx) => {
-      const { current, location } = city;
+      const { current, location, population, rank } = city;
+
       return (
         <Card key={idx} hover>
           <Card.Header title={location.name} subtitle={location.region}>
@@ -71,12 +73,20 @@ function TopCities() {
                 {current.temperature}&deg;
               </Text>
             </div>
-            <p>
+            <p style={{ minHeight: '3.7rem' }}>
               <Text size="1.5rem" weight="200" secondary>
                 {current.weather_descriptions[0]}
               </Text>
             </p>
           </Card.Body>
+          <div>
+            <div>
+              <Text weight="600" size="1.4rem" secondary>Rank: {rank}</Text>
+            </div>
+            <div>
+              <Text weight="600" size="1.4rem" secondary>Population: {population.toString().replace(addComma, ',')}</Text>
+            </div>
+          </div>
           <Card.Overlay className="overlay">
             <Button.Group>
               <Button
