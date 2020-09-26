@@ -81,10 +81,14 @@ function TopCities() {
           </Card.Body>
           <div>
             <div>
-              <Text weight="600" size="1.4rem" secondary>Rank: {rank}</Text>
+              <Text weight="600" size="1.4rem" secondary>
+                Rank: {rank}
+              </Text>
             </div>
             <div>
-              <Text weight="600" size="1.4rem" secondary>Population: {population.toString().replace(addComma, ',')}</Text>
+              <Text weight="600" size="1.4rem" secondary>
+                Population: {population.toString().replace(addComma, ',')}
+              </Text>
             </div>
           </div>
           <Card.Overlay className="overlay">

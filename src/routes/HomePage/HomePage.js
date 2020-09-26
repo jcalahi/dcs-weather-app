@@ -13,7 +13,9 @@ function HomePage() {
       <Container.Panel>
         <header>
           <h1 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-            <Text size="3.5rem" primary>Weather App</Text>
+            <Text size="3.5rem" primary>
+              Weather App
+            </Text>
           </h1>
           <Search />
         </header>

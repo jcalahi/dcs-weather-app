@@ -86,7 +86,9 @@ function Forecast({ cityData }) {
     <>
       <Header>
         <h2>
-          <Text size="3rem" primary>7-day Forecast</Text>
+          <Text size="3rem" primary>
+            7-day Forecast
+          </Text>
         </h2>
       </Header>
       {Object.keys(forecast).length === 0 ? (

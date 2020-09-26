@@ -16,7 +16,10 @@ function CityWeather({ source }) {
       weather={source === 'search' ? searchResult : weather}
       favorites={favorites}
       onToggleFavorites={() =>
-        dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather: source === 'search' ? searchResult : weather })
+        dispatch({
+          type: ACTION_TYPES.TOGGLE_FAVORITES,
+          weather: source === 'search' ? searchResult : weather
+        })
       }
     />
   );

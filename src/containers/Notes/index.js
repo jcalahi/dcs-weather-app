@@ -2,7 +2,11 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import uniqueId from 'lodash/uniqueId';
 import { faFolderOpen } from '@fortawesome/free-regular-svg-icons';
-import { faPlus, faTrashAlt, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPlus,
+  faTrashAlt,
+  faSpinner
+} from '@fortawesome/free-solid-svg-icons';
 
 import WeatherContext from '../../context/WeatherContext';
 
@@ -32,14 +36,10 @@ function Notes() {
 
     if (filteredNotes.length === 0) {
       return (
-        <Empty
-          size="6x"
-          text="Add some notes here'"
-          icon={faFolderOpen}
-        />
+        <Empty size="6x" text="Add some notes here'" icon={faFolderOpen} />
       );
     }
-    return <Grid>{renderNotes(filteredNotes)}</Grid>
+    return <Grid>{renderNotes(filteredNotes)}</Grid>;
   };
 
   const renderNotes = (filteredNotes) => {
@@ -62,19 +62,22 @@ function Notes() {
             />
           </Card.Header>
           <Card.Body style={{ marginBottom: '1rem', marginTop: '1rem' }}>
-            <TextArea value={item.note} onBlur={(value) => {
-              // only update when value has changed
-              if (value !== '' && value !== item.note) {
-                dispatch({
-                  type: ACTION_TYPES.EDIT_NOTE,
-                  payload: {
-                    id: item.id,
-                    note: value,
-                    editedAt: new Date().toLocaleTimeString()
-                  }
-                });
-              }
-            }} />
+            <TextArea
+              value={item.note}
+              onBlur={(value) => {
+                // only update when value has changed
+                if (value !== '' && value !== item.note) {
+                  dispatch({
+                    type: ACTION_TYPES.EDIT_NOTE,
+                    payload: {
+                      id: item.id,
+                      note: value,
+                      editedAt: new Date().toLocaleTimeString()
+                    }
+                  });
+                }
+              }}
+            />
           </Card.Body>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div>
@@ -133,7 +136,9 @@ function Notes() {
           icon={loadingWeather ? faSpinner : faFolderOpen}
           spin={loadingWeather}
         />
-      ) : checkNotesContent()}
+      ) : (
+        checkNotesContent()
+      )}
     </>
   );
 }

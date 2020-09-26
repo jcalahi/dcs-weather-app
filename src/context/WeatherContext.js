@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import { ACTION_TYPES } from '../constants';
 
-const initialState = {
+export const initialState = {
   searchResult: {}, // weather data from searching
   weather: {}, // weather data from clicking a card/city
   cities: [],
@@ -11,7 +11,7 @@ const initialState = {
   loadingWeather: false
 };
 
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case ACTION_TYPES.SEARCH_RESULT: {
       return {
@@ -82,17 +82,21 @@ const reducer = (state, action) => {
       return {
         ...state,
         notes: [...state.notes, action.payload]
-      }
+      };
     }
     case ACTION_TYPES.REMOVE_NOTE: {
-      const filteredNotes = state.notes.filter((note) => note.id !== action.payload.id);
+      const filteredNotes = state.notes.filter(
+        (note) => note.id !== action.payload.id
+      );
       return {
         ...state,
         notes: filteredNotes
       };
     }
     case ACTION_TYPES.EDIT_NOTE: {
-      const idx = state.notes.findIndex((note) => note.id === action.payload.id);
+      const idx = state.notes.findIndex(
+        (note) => note.id === action.payload.id
+      );
       return {
         ...state,
         notes: [
@@ -104,7 +108,7 @@ const reducer = (state, action) => {
           },
           ...state.notes.slice(idx + 1)
         ]
-      }
+      };
     }
     default:
       return state;

@@ -20,7 +20,10 @@ export default function useForecast(query) {
         params
       });
       // store for offline reference
-      window.localStorage.setItem('storedForecast', JSON.stringify(data.forecast));
+      window.localStorage.setItem(
+        'storedForecast',
+        JSON.stringify(data.forecast)
+      );
       setIsLoadingForecast(false);
       setForecast(data.forecast);
     } catch (error) {
@@ -37,6 +40,7 @@ export default function useForecast(query) {
   }, [fetchData, query]);
 
   return {
+    fetchData,
     forecast,
     isLoadingForecoast,
     errorForecastMsg

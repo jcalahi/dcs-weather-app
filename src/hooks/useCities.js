@@ -17,7 +17,7 @@ export default function useCities() {
       cityPopulation[city.Name] = {
         population: city.Population,
         rank: city.rank
-      }
+      };
     }
 
     // build a string for bulk queries
@@ -46,7 +46,10 @@ export default function useCities() {
         };
       });
       // store for offline reference
-      window.localStorage.setItem('storedCities', JSON.stringify(withPopulation));
+      window.localStorage.setItem(
+        'storedCities',
+        JSON.stringify(withPopulation)
+      );
 
       dispatch({ type: ACTION_TYPES.LOADING_CITIES, loading: false });
       dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: withPopulation });
