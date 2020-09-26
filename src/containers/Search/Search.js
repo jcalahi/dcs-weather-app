@@ -10,6 +10,8 @@ import useLookup from '../../hooks/useLookup';
 import useWeather from '../../hooks/useWeather';
 import { useGeoLocation } from '../../hooks/useGeoLocation';
 // useEffect
+import Snackbar from '../../components/Snackbar';
+import Text from '../../components/Text';
 import { ACTION_TYPES } from '../../constants';
 
 const SearchWrapper = styled.div`
@@ -126,9 +128,9 @@ function Search() {
 
   const history = useHistory();
   const { fetchWeather, isLoadingWeather } = useWeather();
-  const { results, isLookingUp, lookup } = useLookup();
+  const { results, isLookingUp, lookup, errorLookupMsg } = useLookup();
   const { position, getPosition } = useGeoLocation();
-
+  console.log('search', errorLookupMsg);
   const debounceSearch = useMemo(() => debounce(lookup, 400), [lookup]);
 
   useEffect(() => {
@@ -204,6 +206,9 @@ function Search() {
               spin={isLookingUp || isLoadingWeather}
             />
           </SearchButton>
+          <Snackbar show={errorLookupMsg}>
+            <Text size="1.5rem" secondary>{errorLookupMsg}</Text>
+          </Snackbar>
         </SearchContainer>
       </form>
       <div style={{ marginTop: '1rem', textAlign: 'center' }}>

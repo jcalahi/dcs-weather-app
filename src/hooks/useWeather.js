@@ -21,6 +21,8 @@ export default function useWeather() {
         const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, {
           params
         });
+
+        dispatch({ type: ACTION_TYPES.LOADING_WEATHER, loading: false });
         if (data.error) {
           setErrorMessage(data.error.info);
         } else {
@@ -31,7 +33,6 @@ export default function useWeather() {
                 'storedWeather',
                 JSON.stringify(data)
               );
-          dispatch({ type: ACTION_TYPES.LOADING_WEATHER, loading: false });
           dispatch({ type: ACTION_TYPES[actionType], weather: data });
         }
       } catch (error) {
