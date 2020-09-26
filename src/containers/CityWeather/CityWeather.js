@@ -5,14 +5,15 @@ import WeatherContext from '../../context/WeatherContext';
 import Weather from '../../components/Weather';
 import { ACTION_TYPES } from '../../constants';
 
-function SearchResult() {
-  const [{ loadingWeather, searchResult, favorites }, dispatch] = useContext(
-    WeatherContext.WeatherStateContext
-  );
+function CityWeather({ source }) {
+  const [
+    { loadingWeather, searchResult, favorites, weather },
+    dispatch
+  ] = useContext(WeatherContext.WeatherStateContext);
   return (
     <Weather
       loading={loadingWeather}
-      weather={searchResult}
+      weather={source === 'search' ? searchResult : weather}
       favorites={favorites}
       onToggleFavorites={() =>
         dispatch({ type: ACTION_TYPES.TOGGLE_FAVORITES, weather: searchResult })
@@ -21,4 +22,4 @@ function SearchResult() {
   );
 }
 
-export default SearchResult;
+export default CityWeather;

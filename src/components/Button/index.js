@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+const ButtonIcon = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const ButtonGroup = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,5 +37,6 @@ const Button = styled.button`
 `;
 
 Button.Group = ButtonGroup;
+Button.Icon = ButtonIcon;
 
 export default Button;

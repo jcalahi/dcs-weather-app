@@ -2,11 +2,11 @@ import React from 'react';
 // components
 import Container from '../../components/Container';
 import Search from '../Search';
-import SearchResult from '../SearchResult';
+import CityWeather from '../CityWeather';
 import Favorites from '../Favorites';
 import TopCities from '../TopCities';
 
-function Home() {
+function HomePage() {
   return (
     <Container>
       <Container.Panel>
@@ -16,7 +16,7 @@ function Home() {
       </Container.Panel>
       <main>
         <Container.Panel>
-          <SearchResult />
+          <CityWeather source="search" />
         </Container.Panel>
         <Container.Panel>
           <Favorites />
@@ -29,4 +29,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;
