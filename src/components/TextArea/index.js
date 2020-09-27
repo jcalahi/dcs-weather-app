@@ -7,7 +7,7 @@ function TextArea({ value, onBlur }) {
     <textarea
       style={{ resize: 'none', width: '100%' }}
       rows="5"
-      value={text}
+      value={value}
       onChange={(e) => setText(e.target.value)}
       onBlur={() => onBlur(text)}
     />
