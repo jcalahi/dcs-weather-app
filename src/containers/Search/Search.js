@@ -35,24 +35,24 @@ const SearchContainer = styled.div`
       }
 
       &__input {
-        border: 2px solid var(--color-lightgrey);
-        font-family: 'Fredoka One', cursive;
-        font-size: 2.5rem;
-        letter-spacing: 2px;
+        border: 2px solid grey;
+        font-family: Raleway, sans-serif;
+        font-size: 2rem;
+        letter-spacing: 1.5px;
         padding: 1rem 4rem 1rem 1rem;
         outline: none;
         transition: all 0.2s ease-in-out;
         width: 100%;
 
         &::placeholder {
-          color: var(--color-lightgrey);
+          color: grey;
         }
 
         &:focus {
-          border: 2px solid var(--color-lightslategrey);
+          border: 2px solid lightseagreen;
 
           &::placeholder {
-            color: var(--color-lightslategrey);
+            color: lightseagreen;
           }
         }
 
@@ -72,7 +72,7 @@ const SearchContainer = styled.div`
           position: absolute;
           top: 6rem;
           width: 100%;
-          border: 2px solid var(--color-lightslategrey);
+          border: 2px solid lightseagreen;
           background-color: #fff;
           font-family: Raleway;
           font-weight: 400;
@@ -92,7 +92,7 @@ const SearchContainer = styled.div`
         padding: 1rem 2rem;
 
         &--highlighted {
-          background-color: var(--color-lightslategrey);
+          background-color: #eee;
         }
       }
     }

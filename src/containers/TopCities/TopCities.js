@@ -101,9 +101,15 @@ function TopCities() {
                   })
                 }
               >
-                Learn more
+                <Text size="1.3rem" weight="300" secondary>
+                  Learn More
+                </Text>
               </Button>
-              <Button onClick={() => handleRemoveCity(idx)}>Remove</Button>
+              <Button onClick={() => handleRemoveCity(idx)}>
+                <Text size="1.3rem" weight="300" secondary>
+                  Remove
+                </Text>
+              </Button>
             </Button.Group>
           </Card.Overlay>
         </Card>

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { string } from 'prop-types';
 // context
 import WeatherContext from '../../context/WeatherContext';
 // components
@@ -24,5 +25,9 @@ function CityWeather({ source }) {
     />
   );
 }
+
+CityWeather.propTypes = {
+  source: string
+};
 
 export default CityWeather;

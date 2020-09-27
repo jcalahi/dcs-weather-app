@@ -13,26 +13,29 @@ const ButtonGroup = styled.div`
   height: 100%;
 
   & > button:first-child {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 `;
 
 const Button = styled.button`
   background-color: #fff;
-  border: 1px solid slategray;
-  border-radius: 5rem;
-  font-size: 1.2rem;
-  padding: 5px 8px;
+  border: 2px solid grey;
+  border-radius: 2rem;
+  padding: 6px 10px;
   transition: all 0.2s ease-out;
 
   &:hover {
     cursor: pointer;
-    border: 1px solid deepskyblue;
-    color: deepskyblue;
+    border: 2px solid lightseagreen;
+    color: lightseagreen;
   }
 
   &:active {
     transform: translateY(5px);
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 

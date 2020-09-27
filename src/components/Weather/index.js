@@ -1,4 +1,5 @@
 import React from 'react';
+import { array, bool, object, func } from 'prop-types';
 import styled from 'styled-components';
 import {
   faStar as regular,
@@ -204,5 +205,12 @@ function Weather({ weather, favorites, onToggleFavorites, loading }) {
     </>
   );
 }
+
+Weather.propTypes = {
+  weather: object,
+  favorties: array,
+  loading: bool,
+  onToggleFavorites: func
+};
 
 export default Weather;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { bool, string, element, func } from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -16,5 +17,14 @@ function Icon({ color, icon, size, onIconClick, hover, spin }) {
     </StyledSpan>
   );
 }
+
+Icon.propTypes = {
+  color: string,
+  icon: element,
+  size: string,
+  onIconClick: func,
+  hover: bool,
+  spin: bool
+};
 
 export default Icon;

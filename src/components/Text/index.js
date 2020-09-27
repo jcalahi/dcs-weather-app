@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { string, bool } from 'prop-types';
 import { respondTo } from '../../utils';
 
 const Text = styled.span`
@@ -28,5 +29,12 @@ const Text = styled.span`
   ${(props) =>
     !props.size && props.secondary && respondTo.lg`font-size: 2.4rem;`};
 `;
+
+Text.propTypes = {
+  primary: bool,
+  secondary: bool,
+  size: string,
+  weight: string
+};
 
 export default Text;

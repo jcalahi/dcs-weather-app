@@ -5,6 +5,7 @@ import WeatherContext from './context/WeatherContext';
 // components
 import HomePage from './routes/HomePage';
 import CityPage from './routes/CityPage';
+import PageNotFound from './components/PageNotFound';
 // @todo add 404 catch all route
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/details" component={CityPage} />
+          <Route path="*" component={PageNotFound} />
         </Switch>
       </WeatherContext.WeatherStateProvider>
     </Router>

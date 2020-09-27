@@ -1,4 +1,5 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { bool } from 'prop-types';
 
 const Snackbar = styled.div`
   background-color: #fffaf3;
@@ -14,5 +15,9 @@ const Snackbar = styled.div`
 
   ${(props) => props.show && `display: flex;`}
 `;
+
+Snackbar.propTypes = {
+  show: bool
+};
 
 export default Snackbar;

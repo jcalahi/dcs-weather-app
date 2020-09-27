@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { string, func } from 'prop-types';
 
 function TextArea({ value, onBlur }) {
   const [text, setText] = useState(value || '');
@@ -9,9 +10,13 @@ function TextArea({ value, onBlur }) {
       value={text}
       onChange={(e) => setText(e.target.value)}
       onBlur={() => onBlur(text)}
-      autoFocus
     />
   );
 }
+
+TextArea.propTypes = {
+  value: string,
+  onBlur: func
+};
 
 export default TextArea;

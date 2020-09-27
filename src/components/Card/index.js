@@ -13,13 +13,13 @@ const Card = styled.div`
   ${(props) =>
     props.hover &&
     `&:hover {
-    border: 1px solid deepskyblue;
-    transform: translateY(-10px);
-    .overlay {
-      opacity: 0.8;
-      top: 33%;
-    }
-  }`}
+      box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+      transform: translateY(-10px);
+      .overlay {
+        opacity: 0.8;
+        top: 33%;
+      }
+    }`}
 `;
 
 Card.Header = Header;

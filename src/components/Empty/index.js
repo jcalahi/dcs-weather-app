@@ -1,4 +1,5 @@
 import React from 'react';
+import { string, element, bool } from 'prop-types';
 import styled from 'styled-components';
 
 import Icon from '../Icon';
@@ -26,5 +27,12 @@ function Empty({ text, size, icon, spin }) {
     </Container>
   );
 }
+
+Empty.propTypes = {
+  text: string,
+  size: string,
+  icon: element,
+  spin: bool
+};
 
 export default Empty;

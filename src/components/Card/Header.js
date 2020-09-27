@@ -1,5 +1,7 @@
 import React from 'react';
+import { string, element } from 'prop-types';
 import styled from 'styled-components';
+
 import Text from '../Text';
 
 const FlexHeader = styled.header`
@@ -26,5 +28,11 @@ function Header({ title, subtitle, children }) {
     </FlexHeader>
   );
 }
+
+Header.propTypes = {
+  title: string,
+  subTitle: string,
+  children: element
+};
 
 export default Header;

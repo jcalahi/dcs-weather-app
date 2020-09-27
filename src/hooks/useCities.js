@@ -32,32 +32,27 @@ export default function useCities() {
 
     try {
       dispatch({ type: ACTION_TYPES.LOADING_CITIES, loading: true });
-      // const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, {
-      //   params
-      // });
-      // const sortedCities = data.sort((a, b) =>
-      //   a.location.name.localeCompare(b.location.name)
-      // );
-      // const withPopulation = sortedCities.map((city, idx) => {
-      //   return {
-      //     ...city,
-      //     population: cityPopulation[city.location.name].population,
-      //     rank: cityPopulation[city.location.name].rank
-      //   };
-      // });
+      const { data } = await axios.get(`${WEATHER_BASE_URL}/current`, {
+        params
+      });
+      const sortedCities = data.sort((a, b) =>
+        a.location.name.localeCompare(b.location.name)
+      );
+      const withPopulation = sortedCities.map((city, idx) => {
+        return {
+          ...city,
+          population: cityPopulation[city.location.name].population,
+          rank: cityPopulation[city.location.name].rank
+        };
+      });
       // store for offline reference
-      // window.localStorage.setItem(
-      //   'storedCities',
-      //   JSON.stringify(withPopulation)
-      // );
-
-      // dispatch({ type: ACTION_TYPES.LOADING_CITIES, loading: false });
-      // dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: withPopulation });
-
-      const store = window.localStorage.getItem('storedCities');
+      window.localStorage.setItem(
+        'storedCities',
+        JSON.stringify(withPopulation)
+      );
 
       dispatch({ type: ACTION_TYPES.LOADING_CITIES, loading: false });
-      dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: JSON.parse(store) });
+      dispatch({ type: ACTION_TYPES.ADD_CITIES, cities: withPopulation });
     } catch (error) {
       const store = window.localStorage.getItem('storedCities');
 

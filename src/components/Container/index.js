@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import Panel from './Panel';
 import { respondTo } from '../../utils';
 
