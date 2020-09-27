@@ -21,9 +21,10 @@ import Header from '../../components/Header';
 import { ACTION_TYPES } from '../../constants';
 
 function TopCities() {
-  const [{ cities, loadingCities, favorites, allCitiesRemoved }, dispatch] = useContext(
-    WeatherContext.WeatherStateContext
-  );
+  const [
+    { cities, loadingCities, favorites, allCitiesRemoved },
+    dispatch
+  ] = useContext(WeatherContext.WeatherStateContext);
   const history = useHistory();
   const { fetchCities } = useCities();
 
