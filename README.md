@@ -42,7 +42,7 @@ See [Demo](https://jcalahi.github.io/dcs-weather-app/) in Github Pages
 
 **Notes added:**
 
-![image](https://user-images.githubusercontent.com/18157157/94362248-9bbbf380-00ec-11eb-8b7f-3e7189c85e72.png)
+![image](https://user-images.githubusercontent.com/18157157/94367437-683f9000-0111-11eb-90e4-c3b454bbc46d.png)
 
 **Search not found:**
 
