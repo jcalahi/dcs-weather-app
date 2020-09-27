@@ -6,7 +6,7 @@ import WeatherContext from './context/WeatherContext';
 import HomePage from './routes/HomePage';
 import CityPage from './routes/CityPage';
 import PageNotFound from './components/PageNotFound';
-// @todo add 404 catch all route
+
 function App() {
   return (
     <Router basename={process.env.PUBLIC_URL + '/'}>

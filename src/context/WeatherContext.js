@@ -8,7 +8,8 @@ export const initialState = {
   favorites: [],
   notes: [],
   loadingCities: false,
-  loadingWeather: false
+  loadingWeather: false,
+  allCitiesRemoved: false
 };
 
 export const reducer = (state, action) => {
@@ -38,7 +39,8 @@ export const reducer = (state, action) => {
         cities: [
           ...state.cities.slice(0, action.cityIdx),
           ...state.cities.slice(action.cityIdx + 1)
-        ]
+        ],
+        allCitiesRemoved: state.cities.length === 1
       };
     }
     case ACTION_TYPES.TOGGLE_FAVORITES: {

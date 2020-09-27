@@ -20,20 +20,18 @@ import Header from '../../components/Header';
 // etc
 import { ACTION_TYPES } from '../../constants';
 
-// @TODO add list of cities in context
-
 function TopCities() {
-  const [{ cities, loadingCities, favorites }, dispatch] = useContext(
+  const [{ cities, loadingCities, favorites, allCitiesRemoved }, dispatch] = useContext(
     WeatherContext.WeatherStateContext
   );
   const history = useHistory();
   const { fetchCities } = useCities();
 
   useEffect(() => {
-    if (cities.length === 0) {
+    if (cities.length === 0 && !allCitiesRemoved) {
       fetchCities();
     }
-  }, [cities, fetchCities]);
+  }, [fetchCities, cities, allCitiesRemoved]);
 
   const getFavoritesName = () => {
     let lookup = {};
@@ -126,7 +124,7 @@ function TopCities() {
           </Text>
         </h2>
       </Header>
-      {loadingCities ? (
+      {loadingCities || cities.length === 0 ? (
         <Empty
           size="6x"
           text={loadingCities ? 'Loading cities...' : 'No cities found'}

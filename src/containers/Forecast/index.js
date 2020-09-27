@@ -1,5 +1,5 @@
 import React from 'react';
-import { object } from 'prop-types';
+import { string } from 'prop-types';
 import {
   faSun,
   faMoon,
@@ -107,7 +107,7 @@ function Forecast({ cityData }) {
 }
 
 Forecast.propTypes = {
-  cityData: object
+  cityData: string
 };
 
 export default Forecast;
