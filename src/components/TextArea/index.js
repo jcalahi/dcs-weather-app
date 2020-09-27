@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { string, func } from 'prop-types';
 
-function TextArea({ value, onBlur }) {
-  const [text, setText] = useState(value || '');
+function TextArea({ value, onChange }) {
   return (
     <textarea
       style={{ resize: 'none', width: '100%' }}
       rows="5"
       value={value}
-      onChange={(e) => setText(e.target.value)}
-      onBlur={() => onBlur(text)}
+      onChange={(e) => onChange(e.target.value)}
     />
   );
 }

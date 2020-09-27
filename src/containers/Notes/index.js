@@ -64,18 +64,14 @@ function Notes() {
           <Card.Body style={{ marginBottom: '1rem', marginTop: '1rem' }}>
             <TextArea
               value={item.note}
-              onBlur={(value) => {
-                // only update when value has changed
-                if (value !== '' && value !== item.note) {
-                  dispatch({
-                    type: ACTION_TYPES.EDIT_NOTE,
-                    payload: {
-                      id: item.id,
-                      note: value,
-                      editedAt: new Date().toLocaleTimeString()
-                    }
-                  });
-                }
+              onChange={(value) => {
+                dispatch({
+                  type: ACTION_TYPES.EDIT_NOTE,
+                  payload: {
+                    id: item.id,
+                    note: value,
+                  }
+                });
               }}
             />
           </Card.Body>
