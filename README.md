@@ -16,7 +16,7 @@ See [Demo](https://jcalahi.github.io/dcs-weather-app/) in Github Pages
 
 Landing page:
 
-[![weather-app image](https://github.com/jcalahi/dcs-weather-app/raw/master/img/homepage_full.png)](#homepage)
+[![weather-app image](https://github.com/jcalahi/dcs-weather-app/raw/master/img/homepage_full.png?raw=true)](#homepage)
 
 ## Available Scripts
 
