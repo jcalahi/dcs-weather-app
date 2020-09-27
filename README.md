@@ -14,27 +14,38 @@ See [Demo](https://jcalahi.github.io/dcs-weather-app/) in Github Pages
 
 ## Screen Shots
 
-Landing page:
+**Landing page:**
 
 ![image](https://user-images.githubusercontent.com/18157157/94362112-a629bd80-00eb-11eb-8c10-f2d8f45c9ff3.png)
 
-autocomplete
+**Autocomplete:**
+
 ![image](https://user-images.githubusercontent.com/18157157/94362168-002a8300-00ec-11eb-9169-e951ba89e019.png)
 
-favorite cities added 
+**Favorite cities added:**
+
 ![image](https://user-images.githubusercontent.com/18157157/94362191-27815000-00ec-11eb-962f-8215dcb35cd0.png)
 
-search result
+**Search result:
+
 ![image](https://user-images.githubusercontent.com/18157157/94362206-4f70b380-00ec-11eb-8f79-c7f52083ff9b.png)
 
-card hover
+**Card hover:**
+
 ![image](https://user-images.githubusercontent.com/18157157/94362223-6dd6af00-00ec-11eb-82eb-bfcc77effb6b.png)
 
-details page
+**Details page:**
+
 ![image](https://user-images.githubusercontent.com/18157157/94362241-83e46f80-00ec-11eb-8ea5-b0bd7c64a214.png)
 
-notes added
+**Notes added:**
+
 ![image](https://user-images.githubusercontent.com/18157157/94362248-9bbbf380-00ec-11eb-8b7f-3e7189c85e72.png)
+
+**Search not found:**
+
+![image](https://user-images.githubusercontent.com/18157157/94362292-e3db1600-00ec-11eb-832c-828d9e267b32.png)
+
 
 ## Available Scripts
 
