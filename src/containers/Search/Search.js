@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 import Autosuggest from 'react-autosuggest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSearch,
+  faSpinner,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons';
 // hooks
 import { useHistory } from 'react-router-dom';
 import useLookup from '../../hooks/useLookup';
@@ -129,7 +133,13 @@ function Search() {
 
   const history = useHistory();
   const { fetchWeather, isLoadingWeather } = useWeather();
-  const { results, isLookingUp, lookup, errorLookupMsg, setErrorLookupMsg } = useLookup();
+  const {
+    results,
+    isLookingUp,
+    lookup,
+    errorLookupMsg,
+    setErrorLookupMsg
+  } = useLookup();
   const { isLoadingPosition, position, getPosition } = useGeoLocation();
   const debounceSearch = useMemo(() => debounce(lookup, 400), [lookup]);
 
@@ -203,12 +213,18 @@ function Search() {
           <SearchButton>
             <FontAwesomeIcon
               size="2x"
-              icon={isLookingUp || isLoadingWeather || isLoadingPosition ? faSpinner : faSearch}
+              icon={
+                isLookingUp || isLoadingWeather || isLoadingPosition
+                  ? faSpinner
+                  : faSearch
+              }
               spin={isLookingUp || isLoadingWeather || isLoadingPosition}
             />
           </SearchButton>
           <Snackbar show={errorLookupMsg}>
-            <Text size="1.5rem" secondary>{errorLookupMsg}</Text>
+            <Text size="1.5rem" secondary>
+              {errorLookupMsg}
+            </Text>
             <span onClick={() => setErrorLookupMsg(null)}>
               <Icon size="2x" icon={faTimes} />
             </span>

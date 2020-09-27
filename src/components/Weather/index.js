@@ -149,9 +149,7 @@ function Weather({ weather, favorites, onToggleFavorites, loading }) {
                 Wind Speed
               </Text>
               <Tile.Body>
-                <Text secondary>
-                  {`${current.wind_speed} km/h`}
-                </Text>
+                <Text secondary>{`${current.wind_speed} km/h`}</Text>
               </Tile.Body>
               <Icon icon={faWind} size="4x" />
             </Tile>
@@ -160,9 +158,7 @@ function Weather({ weather, favorites, onToggleFavorites, loading }) {
                 Wind Direction
               </Text>
               <Tile.Body>
-                <Text secondary>
-                  {`${current.wind_dir}`}
-                </Text>
+                <Text secondary>{`${current.wind_dir}`}</Text>
               </Tile.Body>
               <Icon icon={faCompass} size="4x" />
             </Tile>
@@ -198,9 +194,7 @@ function Weather({ weather, favorites, onToggleFavorites, loading }) {
                 Feels like
               </Text>
               <Tile.Body>
-                <Text secondary>{`${
-                  current.feelslike
-                } ${'\u00b0'}C`}</Text>
+                <Text secondary>{`${current.feelslike} ${'\u00b0'}C`}</Text>
               </Tile.Body>
               <Icon icon={faTemperatureLow} size="4x" />
             </Tile>
