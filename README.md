@@ -7,6 +7,8 @@ See [Demo](https://jcalahi.github.io/dcs-weather-app/) in Github Pages
 ```javascript
   - React
   - styled components
+  - fontawesome icons
+  - WeatherStack APIs
   - axios
   - react-autosuggest
   - testing-library/react
