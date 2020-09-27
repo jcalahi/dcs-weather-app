@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, element, bool } from 'prop-types';
+import { string, object, bool } from 'prop-types';
 import styled from 'styled-components';
 
 import Icon from '../Icon';
@@ -31,7 +31,7 @@ function Empty({ text, size, icon, spin }) {
 Empty.propTypes = {
   text: string,
   size: string,
-  icon: element,
+  icon: object,
   spin: bool
 };
 

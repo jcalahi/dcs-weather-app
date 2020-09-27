@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bool } from 'prop-types';
+import { string } from 'prop-types';
 
 const Snackbar = styled.div`
   background-color: #fffaf3;
@@ -17,7 +17,7 @@ const Snackbar = styled.div`
 `;
 
 Snackbar.propTypes = {
-  show: bool
+  show: string
 };
 
 export default Snackbar;

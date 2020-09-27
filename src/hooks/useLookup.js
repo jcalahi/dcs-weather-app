@@ -5,7 +5,7 @@ import { WEATHER_BASE_URL } from '../constants';
 export default function useLookup() {
   const [results, setResults] = useState([]);
   const [isLookingUp, setIsLookingUp] = useState(false);
-  const [errorLookupMsg, setErrorLookupMsg] = useState(null);
+  const [errorLookupMsg, setErrorLookupMsg] = useState('');
 
   const lookup = useCallback(async (query) => {
     const params = {
@@ -25,7 +25,7 @@ export default function useLookup() {
         setResults(data.results);
       }
     } catch (error) {
-      setErrorLookupMsg(error);
+      setErrorLookupMsg(error.toString());
     } finally {
       setIsLookingUp(false);
     }

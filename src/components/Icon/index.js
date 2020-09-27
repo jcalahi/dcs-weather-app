@@ -1,5 +1,5 @@
 import React from 'react';
-import { bool, string, element, func } from 'prop-types';
+import { bool, string, object, func } from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -20,7 +20,7 @@ function Icon({ color, icon, size, onIconClick, hover, spin }) {
 
 Icon.propTypes = {
   color: string,
-  icon: element,
+  icon: object,
   size: string,
   onIconClick: func,
   hover: bool,
