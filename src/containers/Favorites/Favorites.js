@@ -76,7 +76,7 @@ function Favorites() {
     <>
       <Header>
         <h2>
-          <Text size="3rem" primary>{`Favorites (${favorites.length})`}</Text>
+          <Text size="2.5rem" weight="600" secondary>{`Favorites (${favorites.length})`}</Text>
         </h2>
       </Header>
       {favorites.length === 0 ? (

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 import Autosuggest from 'react-autosuggest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 // hooks
 import { useHistory } from 'react-router-dom';
 import useLookup from '../../hooks/useLookup';
@@ -12,6 +12,7 @@ import { useGeoLocation } from '../../hooks/useGeoLocation';
 // useEffect
 import Snackbar from '../../components/Snackbar';
 import Text from '../../components/Text';
+import Icon from '../../components/Icon';
 import { ACTION_TYPES } from '../../constants';
 
 const SearchWrapper = styled.div`
@@ -128,20 +129,19 @@ function Search() {
 
   const history = useHistory();
   const { fetchWeather, isLoadingWeather } = useWeather();
-  const { results, isLookingUp, lookup, errorLookupMsg } = useLookup();
-  const { position, getPosition } = useGeoLocation();
-  console.log('search', errorLookupMsg);
+  const { results, isLookingUp, lookup, errorLookupMsg, setErrorLookupMsg } = useLookup();
+  const { isLoadingPosition, position, getPosition } = useGeoLocation();
   const debounceSearch = useMemo(() => debounce(lookup, 400), [lookup]);
 
   useEffect(() => {
-    if (position) {
+    if (position && !isLoadingPosition) {
       // we navigate to details page once
       // user allows location access
       history.push('/details', {
         query: position
       });
     }
-  }, [position, history, query]);
+  }, [position, history, query, isLoadingPosition]);
 
   const handleChange = (e, { newValue }) => {
     setQuery(newValue);
@@ -150,9 +150,10 @@ function Search() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const searchStr = e.target[0].value;
+    const str = searchStr.split(';')[0];
     // call API if input is not blank
-    if (searchStr !== '') {
-      fetchWeather(searchStr, ACTION_TYPES.SEARCH_RESULT);
+    if (str !== '') {
+      fetchWeather(str, ACTION_TYPES.SEARCH_RESULT);
     }
   };
   // populates the input value upon mouse/keyboard click
@@ -202,12 +203,15 @@ function Search() {
           <SearchButton>
             <FontAwesomeIcon
               size="2x"
-              icon={isLookingUp || isLoadingWeather ? faSpinner : faSearch}
-              spin={isLookingUp || isLoadingWeather}
+              icon={isLookingUp || isLoadingWeather || isLoadingPosition ? faSpinner : faSearch}
+              spin={isLookingUp || isLoadingWeather || isLoadingPosition}
             />
           </SearchButton>
           <Snackbar show={errorLookupMsg}>
             <Text size="1.5rem" secondary>{errorLookupMsg}</Text>
+            <span onClick={() => setErrorLookupMsg(null)}>
+              <Icon size="2x" icon={faTimes} />
+            </span>
           </Snackbar>
         </SearchContainer>
       </form>

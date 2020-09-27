@@ -20,6 +20,8 @@ import Text from '../Text';
 import Tile from '../Tile';
 import Empty from '../Empty';
 
+import { respondTo } from '../../utils';
+
 const PageHeader = styled.header`
   display: flex;
   justify-content: space-between;
@@ -31,13 +33,27 @@ const PageHeader = styled.header`
 `;
 
 const PageBody = styled.div`
-  display: flex;
+  ${respondTo.xxs`
+    display: block;
+  `}
+
+  ${respondTo.xl`
+    display: flex;
+  `}
 `;
 
 const PageBodyLeft = styled.div`
   display: flex;
   flex-basis: 40%;
   justify-content: space-evenly;
+
+  ${respondTo.xxs`
+    margin-bottom: 2rem;
+  `}
+
+  ${respondTo.xl`
+    margin-bottom: 0;
+  `}
 `;
 
 const PageBodyRight = styled.div`
@@ -72,7 +88,7 @@ function Weather({ weather, favorites, onToggleFavorites, loading }) {
     return idx !== -1;
   };
 
-  if (Object.keys(weather).length === 0 || loading)
+  if (loading) {
     return (
       <Empty
         size="6x"
@@ -81,18 +97,21 @@ function Weather({ weather, favorites, onToggleFavorites, loading }) {
         spin={loading}
       />
     );
+  }
+
+  if (Object.keys(weather).length === 0) return null;
 
   return (
     <>
       <PageHeader>
         <div>
           <h2 style={{ display: 'inline-block' }}>
-            <Text size="3rem" primary>
+            <Text size="2.4rem" primary>
               {getCityName()}
             </Text>
           </h2>
           <p>
-            <Text weight="300" size="2.5rem" secondary>
+            <Text size="2rem" weight="300" secondary>
               {getCurrentDate()}
             </Text>
           </p>
@@ -126,60 +145,60 @@ function Weather({ weather, favorites, onToggleFavorites, loading }) {
         <PageBodyRight>
           <Tile.Group style={{ height: '100%' }}>
             <Tile>
-              <Text size="2rem" weight="300" primary>
+              <Text weight="300" primary>
                 Wind Speed
               </Text>
               <Tile.Body>
-                <Text size="2.5rem" secondary>
+                <Text secondary>
                   {`${current.wind_speed} km/h`}
                 </Text>
               </Tile.Body>
               <Icon icon={faWind} size="4x" />
             </Tile>
             <Tile>
-              <Text size="2rem" weight="300" primary>
+              <Text weight="300" primary>
                 Wind Direction
               </Text>
               <Tile.Body>
-                <Text size="2.5rem" secondary>
+                <Text secondary>
                   {`${current.wind_dir}`}
                 </Text>
               </Tile.Body>
               <Icon icon={faCompass} size="4x" />
             </Tile>
             <Tile>
-              <Text size="2rem" weight="300" primary>
+              <Text weight="300" primary>
                 Pressure
               </Text>
               <Tile.Body>
-                <Text size="2.5rem" secondary>{`${current.pressure} mb`}</Text>
+                <Text secondary>{`${current.pressure} mb`}</Text>
               </Tile.Body>
               <Icon icon={faCloudscale} size="4x" />
             </Tile>
             <Tile>
-              <Text size="2rem" weight="300" primary>
+              <Text weight="300" primary>
                 Humidity
               </Text>
               <Tile.Body>
-                <Text size="2.5rem" secondary>{`${current.humidity} %`}</Text>
+                <Text secondary>{`${current.humidity} %`}</Text>
               </Tile.Body>
               <Icon icon={faWater} size="4x" />
             </Tile>
             <Tile>
-              <Text size="2rem" weight="300" primary>
+              <Text weight="300" primary>
                 Cloud Cover
               </Text>
               <Tile.Body>
-                <Text size="2.5rem" secondary>{`${current.cloudcover} %`}</Text>
+                <Text secondary>{`${current.cloudcover} %`}</Text>
               </Tile.Body>
               <Icon icon={faCloud} size="4x" />
             </Tile>
             <Tile>
-              <Text size="2rem" weight="300" primary>
+              <Text weight="300" primary>
                 Feels like
               </Text>
               <Tile.Body>
-                <Text size="2.5rem" secondary>{`${
+                <Text secondary>{`${
                   current.feelslike
                 } ${'\u00b0'}C`}</Text>
               </Tile.Body>

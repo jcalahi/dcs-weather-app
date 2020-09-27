@@ -35,6 +35,7 @@ export default function useLookup() {
     setResults,
     isLookingUp,
     lookup,
-    errorLookupMsg
+    errorLookupMsg,
+    setErrorLookupMsg
   };
 }

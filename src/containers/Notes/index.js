@@ -108,7 +108,7 @@ function Notes() {
     <>
       <NotesHeader>
         <h2>
-          <Text size="3rem" primary>
+          <Text size="2.5rem" weight="600" secondary>
             Notes
           </Text>
         </h2>

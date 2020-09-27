@@ -21,3 +21,11 @@ export const ACTION_TYPES = {
   REMOVE_NOTE: 'REMOVE_NOTE',
   EDIT_NOTE: 'EDIT_NOTE'
 };
+export const breakpoints = {
+  xxs: '320px',
+  xs: '480',
+  sm: '768px',
+  md: '992px',
+  lg: '1200px',
+  xl: '1600px'
+};

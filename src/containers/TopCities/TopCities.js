@@ -27,7 +27,7 @@ function TopCities() {
     WeatherContext.WeatherStateContext
   );
   const history = useHistory();
-  const { fetchCities, errorCitiesMsg } = useCities();
+  const { fetchCities } = useCities();
 
   useEffect(() => {
     if (cities.length === 0) {
@@ -115,8 +115,8 @@ function TopCities() {
     <>
       <Header>
         <h2>
-          <Text size="3rem" primary>
-            Top 15 cities by Population (A-Z)
+          <Text size="2.5rem" weight="600" secondary>
+            Top 15 cities by population (A-Z)
           </Text>
         </h2>
       </Header>
