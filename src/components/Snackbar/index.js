@@ -13,7 +13,7 @@ const Snackbar = styled.div`
   width: 35rem;
   width: 35rem;
 
-  ${(props) => props.show && `display: flex;`}
+  ${(props) => props.show && `display: flex; justify-content: space-between;`}
 `;
 
 Snackbar.propTypes = {
