@@ -46,6 +46,9 @@ See [Demo](https://jcalahi.github.io/dcs-weather-app/) in Github Pages
 
 ![image](https://user-images.githubusercontent.com/18157157/94362292-e3db1600-00ec-11eb-832c-828d9e267b32.png)
 
+**Some responsive support:**
+![image](https://user-images.githubusercontent.com/18157157/94362398-927f5680-00ed-11eb-85c6-bf2a7210d5bb.png)
+
 
 ## Available Scripts
 
