@@ -69,7 +69,7 @@ function Notes() {
                   type: ACTION_TYPES.EDIT_NOTE,
                   payload: {
                     id: item.id,
-                    note: value,
+                    note: value
                   }
                 });
               }}
