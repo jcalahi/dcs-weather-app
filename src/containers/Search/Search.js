@@ -152,7 +152,15 @@ function Search() {
         query: position
       });
     }
-  }, [position, history, query, isLoadingPosition]);
+  }, [position, history, isLoadingPosition]);
+
+  useEffect(() => {
+    if (query.length === 0) {
+      debounceSearch.cancel();
+      setResults([]);
+      resetWeather();
+    }
+  }, [query, debounceSearch, setResults, resetWeather]);
 
   const handleChange = (e, { newValue }) => {
     setQuery(newValue);
@@ -194,12 +202,6 @@ function Search() {
     }
   };
 
-  const onSuggestionsClearRequested = () => {
-    debounceSearch.cancel();
-    setResults([]);
-    resetWeather();
-  };
-
   return (
     <SearchWrapper>
       <form onSubmit={handleSubmit}>
@@ -213,7 +215,7 @@ function Search() {
             }}
             suggestions={results}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={onSuggestionsClearRequested}
+            onSuggestionsClearRequested={() => {}}
             onSuggestionSelected={onSuggestionSelected}
             getSuggestionValue={getSuggestionValue}
             renderSuggestion={renderSuggestion}
