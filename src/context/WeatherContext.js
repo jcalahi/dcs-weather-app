@@ -112,6 +112,12 @@ export const reducer = (state, action) => {
         ]
       };
     }
+    case ACTION_TYPES.RESET_WEATHER: {
+      return {
+        ...state,
+        searchResult: {}
+      };
+    }
     default:
       return state;
   }

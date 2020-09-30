@@ -117,3 +117,13 @@ test('reducer: WeatherContextReducer ACTION_TYPES.EDIT_NOTE', () => {
   });
   expect(updatedState.notes[1]).toMatchObject({ id: 'zero', note: 'mmm' });
 });
+
+test('reducer: WeatherContextReducer ACTION_TYPES.RESET_WEATHER', () => {
+  const mockState = {
+    searchResult: { current: {}, location: {} }
+  };
+  const updatedState = reducer(mockState, {
+    type: ACTION_TYPES.RESET_WEATHER
+  });
+  expect(updatedState.searchResult).toMatchObject({});
+});

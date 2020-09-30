@@ -48,8 +48,14 @@ export default function useWeather() {
     },
     [dispatch]
   );
+
+  const resetWeather = useCallback(() => {
+    dispatch({ type: ACTION_TYPES.RESET_WEATHER });
+  }, [dispatch]);
+
   return {
     fetchWeather,
+    resetWeather,
     errorMessage
   };
 }

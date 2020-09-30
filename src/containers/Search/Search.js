@@ -132,9 +132,10 @@ function Search() {
   const [query, setQuery] = useState('');
 
   const history = useHistory();
-  const { fetchWeather, isLoadingWeather } = useWeather();
+  const { fetchWeather, isLoadingWeather, resetWeather } = useWeather();
   const {
     results,
+    setResults,
     isLookingUp,
     lookup,
     errorLookupMsg,
@@ -163,6 +164,7 @@ function Search() {
     const str = searchStr.split(';')[0];
     // call API if input is not blank
     if (str !== '') {
+      debounceSearch.cancel();
       fetchWeather(str, ACTION_TYPES.SEARCH_RESULT);
     }
   };
@@ -192,6 +194,12 @@ function Search() {
     }
   };
 
+  const onSuggestionsClearRequested = () => {
+    debounceSearch.cancel();
+    setResults([]);
+    resetWeather();
+  };
+
   return (
     <SearchWrapper>
       <form onSubmit={handleSubmit}>
@@ -205,7 +213,7 @@ function Search() {
             }}
             suggestions={results}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={() => {}}
+            onSuggestionsClearRequested={onSuggestionsClearRequested}
             onSuggestionSelected={onSuggestionSelected}
             getSuggestionValue={getSuggestionValue}
             renderSuggestion={renderSuggestion}

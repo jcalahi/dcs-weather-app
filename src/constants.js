@@ -19,7 +19,8 @@ export const ACTION_TYPES = {
   LOADING_WEATHER: 'LOADING_WEATHER',
   ADD_NOTE: 'ADD_NOTE',
   REMOVE_NOTE: 'REMOVE_NOTE',
-  EDIT_NOTE: 'EDIT_NOTE'
+  EDIT_NOTE: 'EDIT_NOTE',
+  RESET_WEATHER: 'RESET_WEATHER'
 };
 export const breakpoints = {
   xxs: '320px',
